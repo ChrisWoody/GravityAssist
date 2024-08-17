@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr08ajut6v7wk"]
+
+[ext_resource type="Texture2D" uid="uid://baeptu70722k0" path="res://assests/backgroundv1.png" id="1_s5gvq"]
+[ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="2_kspeu"]
+[ext_resource type="PackedScene" uid="uid://ddiylcki0mec2" path="res://scenes/spaceship.tscn" id="3_saj76"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_hrhu3"]
+size = Vector2(1000, 800)
+
+[node name="World" type="Node"]
+
+[node name="Background" type="MeshInstance2D" parent="."]
+position = Vector2(-9.50004, 0)
+scale = Vector2(1.291, 1)
+mesh = SubResource("QuadMesh_hrhu3")
+texture = ExtResource("1_s5gvq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Planet" parent="." instance=ExtResource("2_kspeu")]
+position = Vector2(-248, -119)
+
+[node name="Planet2" parent="." instance=ExtResource("2_kspeu")]
+position = Vector2(218, -110)
+
+[node name="Spaceship" parent="." instance=ExtResource("3_saj76")]
+position = Vector2(-546, -10)

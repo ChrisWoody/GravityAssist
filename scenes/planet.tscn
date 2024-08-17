@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5o8hhlfen65s"]
+
+[ext_resource type="Texture2D" uid="uid://b1jkuolsh6d75" path="res://assests/planetv1.png" id="1_ig4r2"]
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_ubbjg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3n0ph"]
+size = Vector2(50, 50)
+
+[node name="Planet" type="Node2D"]
+script = ExtResource("1_ubbjg")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_3n0ph")
+texture = ExtResource("1_ig4r2")
