@@ -11,6 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var diff := position - spaceship.position
 	if diff.length() < 150.0:
-		spaceship.applyGravity(diff.normalized())
+		var gravityRotation := -2.0 if spaceship.position.y > position.y else 2.0
+		spaceship.applyGravity(diff.normalized(), gravityRotation)
 
 	pass

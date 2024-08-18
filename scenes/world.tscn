@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr08ajut6v7wk"]
+[gd_scene load_steps=8 format=3 uid="uid://dr08ajut6v7wk"]
 
 [ext_resource type="Texture2D" uid="uid://baeptu70722k0" path="res://assests/backgroundv1.png" id="1_s5gvq"]
 [ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="2_kspeu"]
 [ext_resource type="PackedScene" uid="uid://ddiylcki0mec2" path="res://scenes/spaceship.tscn" id="3_saj76"]
+[ext_resource type="Script" path="res://scripts/uimanager.gd" id="4_moe5a"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="5_frs4h"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hrhu3"]
 size = Vector2(1000, 800)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpjxx"]
+font_size = 25
 
 [node name="World" type="Node"]
 
@@ -25,3 +30,23 @@ position = Vector2(218, -110)
 
 [node name="Spaceship" parent="." instance=ExtResource("3_saj76")]
 position = Vector2(-546, -10)
+
+[node name="GameUI" type="CanvasGroup" parent="."]
+script = ExtResource("4_moe5a")
+
+[node name="Label" type="Label" parent="GameUI"]
+offset_left = -548.0
+offset_top = -295.0
+offset_right = -341.0
+offset_bottom = -222.0
+text = "Speed: 0.0
+Angle: 0.0
+Gravity: false"
+label_settings = SubResource("LabelSettings_jpjxx")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("5_frs4h")
+
+[connection signal="somethingChanged" from="Spaceship" to="GameUI" method="_on_spaceship_something_changed"]
+[connection signal="launch" from="GameManager" to="Spaceship" method="_on_game_manager_launch"]
+[connection signal="resetGame" from="GameManager" to="Spaceship" method="_on_game_manager_reset_game"]
