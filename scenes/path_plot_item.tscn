@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ndsi27tyimon"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_t6cq6"]
+
+[node name="PathPlotItem" type="MeshInstance2D"]
+scale = Vector2(5, 5)
+mesh = SubResource("QuadMesh_t6cq6")

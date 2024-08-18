@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr08ajut6v7wk"]
+[gd_scene load_steps=9 format=3 uid="uid://dr08ajut6v7wk"]
 
 [ext_resource type="Texture2D" uid="uid://baeptu70722k0" path="res://assests/backgroundv1.png" id="1_s5gvq"]
 [ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="2_kspeu"]
 [ext_resource type="PackedScene" uid="uid://ddiylcki0mec2" path="res://scenes/spaceship.tscn" id="3_saj76"]
 [ext_resource type="Script" path="res://scripts/uimanager.gd" id="4_moe5a"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="5_frs4h"]
+[ext_resource type="PackedScene" uid="uid://c8hc50k4i5dp7" path="res://scenes/path_plotter.tscn" id="6_kygms"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hrhu3"]
 size = Vector2(1000, 800)
@@ -47,6 +48,10 @@ label_settings = SubResource("LabelSettings_jpjxx")
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("5_frs4h")
 
+[node name="PathPlotter" parent="." instance=ExtResource("6_kygms")]
+
 [connection signal="somethingChanged" from="Spaceship" to="GameUI" method="_on_spaceship_something_changed"]
 [connection signal="launch" from="GameManager" to="Spaceship" method="_on_game_manager_launch"]
+[connection signal="launch" from="GameManager" to="PathPlotter" method="_on_game_manager_launch"]
 [connection signal="resetGame" from="GameManager" to="Spaceship" method="_on_game_manager_reset_game"]
+[connection signal="resetGame" from="GameManager" to="PathPlotter" method="_on_game_manager_reset_game"]

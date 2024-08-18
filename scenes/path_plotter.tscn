@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8hc50k4i5dp7"]
+
+[ext_resource type="Script" path="res://scripts/path_plotter.gd" id="1_liuj6"]
+[ext_resource type="PackedScene" uid="uid://ndsi27tyimon" path="res://scenes/path_plot_item.tscn" id="2_m1dkn"]
+
+[node name="PathPlotter" type="Node"]
+script = ExtResource("1_liuj6")
+pathPlot = ExtResource("2_m1dkn")
