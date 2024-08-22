@@ -55,11 +55,9 @@ func applyGravity(dir: Vector2, gravityRotationToApply: float) -> void:
 
 func _input(event):
 	if playing:
-		pass
+		return
 
 	if event is InputEventMouseButton:
-		var mousePosition = get_global_mouse_position()
-		#print(mousePosition)
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if clicking:
 				clicking = false
@@ -69,7 +67,7 @@ func _input(event):
 				launchLine.set_point_position(1, Vector2.ZERO)
 			else:
 				clicking = true
-				mouseClickStartPosition = mousePosition
+				mouseClickStartPosition = position
 				launchLine.set_point_position(0, launchLine.to_local(mouseClickStartPosition))
 
 func _on_game_manager_launch() -> void:
@@ -80,7 +78,7 @@ func _on_game_manager_reset_game() -> void:
 	applyGravityNext = false
 	gravityRotation = 0.0
 	rotateElapsed = 0.0
-	speed = 60.0
+	speed = 0.0
 	rotation_degrees = 90.0
 	global_position = originalPosition
 	somethingChanged.emit(speed, rotation_degrees, applyGravityNext)

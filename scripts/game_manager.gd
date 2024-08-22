@@ -8,7 +8,8 @@ var playing := false
 var preparing := true
 
 func _process(_delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("reset"):
+		resetGame.emit()
 
 func launched() -> void:
 	preparing = false
