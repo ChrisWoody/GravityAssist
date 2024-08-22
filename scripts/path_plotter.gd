@@ -29,6 +29,8 @@ func _process(delta: float) -> void:
 			pathPlots[spawnIndex].global_rotation = spaceship.global_rotation
 			pathPlots[spawnIndex].visible = true
 			spawnIndex = spawnIndex + 1
+			if spawnIndex >= SPAWN_TOTAL:
+				spawnIndex = SPAWN_TOTAL - 1
 
 
 

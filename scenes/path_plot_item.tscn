@@ -3,5 +3,5 @@
 [sub_resource type="QuadMesh" id="QuadMesh_t6cq6"]
 
 [node name="PathPlotItem" type="MeshInstance2D"]
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 mesh = SubResource("QuadMesh_t6cq6")

@@ -50,6 +50,11 @@ script = ExtResource("5_frs4h")
 
 [node name="PathPlotter" parent="." instance=ExtResource("6_kygms")]
 
+[node name="LaunchLine" type="Line2D" parent="."]
+z_index = 1
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+
 [connection signal="somethingChanged" from="Spaceship" to="GameUI" method="_on_spaceship_something_changed"]
 [connection signal="launch" from="GameManager" to="Spaceship" method="_on_game_manager_launch"]
 [connection signal="launch" from="GameManager" to="PathPlotter" method="_on_game_manager_launch"]
