@@ -15,3 +15,8 @@ func _process(delta: float) -> void:
 		spaceship.applyGravity(diff.normalized(), gravityRotation)
 
 	pass
+
+
+func _on_area_2d_area_entered(area:Area2D) -> void:
+	# assuming its the spaceship
+	spaceship.crashedPlanet()

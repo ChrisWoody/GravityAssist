@@ -4,6 +4,9 @@ signal somethingChanged(speed: float, rotation: float, gravityApplied: bool)
 @onready var gameManager: GameManager = get_node("../GameManager")
 @onready var launchLine: Line2D = get_node("../LaunchLine")
 
+@export var topLeftWall: Node2D
+@export var bottomRightWall: Node2D
+
 const ROTATE_TIMEOUT = 0.05
 var rotateElapsed := 0.0
 
@@ -37,6 +40,10 @@ func _process(delta: float) -> void:
 		
 		position += (Vector2.from_angle(deg_to_rad(rotation_degrees - 90.0)) * delta * speed)
 		somethingChanged.emit(speed, rotation_degrees, applyGravityNext)
+
+		if position.y <= topLeftWall.position.y or position.y >= bottomRightWall.position.y or position.x <= topLeftWall.position.x or position.x >= bottomRightWall.position.x:
+			gameManager.spaceshipCrashed()
+
 	elif clicking:
 		mouseClickEndPosition = get_global_mouse_position()		
 		launchLine.set_point_position(1, launchLine.to_local(mouseClickEndPosition))
@@ -47,6 +54,9 @@ func _process(delta: float) -> void:
 		rotation_degrees = angleInDegress
 		
 		somethingChanged.emit(speed, angleInDegress, applyGravityNext)
+
+func crashedPlanet() -> void:
+	gameManager.spaceshipCrashed()
 
 func applyGravity(dir: Vector2, gravityRotationToApply: float) -> void:
 	#gravity = dir

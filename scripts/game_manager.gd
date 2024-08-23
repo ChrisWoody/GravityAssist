@@ -15,3 +15,8 @@ func launched() -> void:
 	preparing = false
 	playing = true
 	launch.emit()
+
+func spaceshipCrashed() -> void:
+	preparing = true
+	playing = false
+	resetGame.emit()

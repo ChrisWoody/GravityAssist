@@ -17,7 +17,7 @@ font_size = 25
 
 [node name="Background" type="MeshInstance2D" parent="."]
 position = Vector2(-9.50004, 0)
-scale = Vector2(1.291, 1)
+scale = Vector2(1.606, 1.244)
 mesh = SubResource("QuadMesh_hrhu3")
 texture = ExtResource("1_s5gvq")
 
@@ -29,17 +29,19 @@ position = Vector2(-248, -119)
 [node name="Planet2" parent="." instance=ExtResource("2_kspeu")]
 position = Vector2(218, -110)
 
-[node name="Spaceship" parent="." instance=ExtResource("3_saj76")]
+[node name="Spaceship" parent="." node_paths=PackedStringArray("topLeftWall", "bottomRightWall") instance=ExtResource("3_saj76")]
 position = Vector2(-546, -10)
+topLeftWall = NodePath("../TopLetWall")
+bottomRightWall = NodePath("../BottomRightWall")
 
 [node name="GameUI" type="CanvasGroup" parent="."]
 script = ExtResource("4_moe5a")
 
 [node name="Label" type="Label" parent="GameUI"]
-offset_left = -548.0
-offset_top = -295.0
-offset_right = -341.0
-offset_bottom = -222.0
+offset_left = -757.0
+offset_top = -430.0
+offset_right = -550.0
+offset_bottom = -319.0
 text = "Speed: 0.0
 Angle: 0.0
 Gravity: false"
@@ -54,6 +56,12 @@ script = ExtResource("5_frs4h")
 z_index = 1
 points = PackedVector2Array(0, 0, 0, 0)
 width = 5.0
+
+[node name="TopLetWall" type="Node2D" parent="."]
+position = Vector2(-800, -460)
+
+[node name="BottomRightWall" type="Node2D" parent="."]
+position = Vector2(779, 481)
 
 [connection signal="somethingChanged" from="Spaceship" to="GameUI" method="_on_spaceship_something_changed"]
 [connection signal="launch" from="GameManager" to="Spaceship" method="_on_game_manager_launch"]
