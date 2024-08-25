@@ -1,37 +1,19 @@
 class_name PathPlotter extends Node
 
-@export var pathPlot: PackedScene
 @onready var spaceship: Spaceship = get_node("../Spaceship")
+@onready var line2d: Line2D = $Line2D
 
 var playing := false
 
-const SPAWN_TOTAL := 100
-var spawnIndex := 0
-
-const SPAWN_TIMEOUT := 0.3
+const SPAWN_TIMEOUT := 0.1
 var spawnElapsed := 0.0
-
-var pathPlots: Array[MeshInstance2D]
-
-func _ready() -> void:
-	for n in SPAWN_TOTAL:
-		var pathPlotInstance: MeshInstance2D = pathPlot.instantiate()
-		add_child(pathPlotInstance)
-		pathPlotInstance.visible = false
-		pathPlots.push_back(pathPlotInstance)
 
 func _process(delta: float) -> void:
 	if playing:
 		spawnElapsed += delta
 		if spawnElapsed >= SPAWN_TIMEOUT:
 			spawnElapsed = 0.0
-			pathPlots[spawnIndex].global_position = spaceship.global_position
-			pathPlots[spawnIndex].global_rotation = spaceship.global_rotation
-			pathPlots[spawnIndex].visible = true
-			spawnIndex = spawnIndex + 1
-			if spawnIndex >= SPAWN_TOTAL:
-				spawnIndex = SPAWN_TOTAL - 1
-
+			line2d.add_point(spaceship.global_position)
 
 
 func _on_game_manager_launch() -> void:
@@ -41,6 +23,4 @@ func _on_game_manager_launch() -> void:
 func _on_game_manager_reset_game() -> void:
 	playing = false
 	spawnElapsed = 0.0
-	spawnIndex = 0
-	for n in SPAWN_TOTAL:
-		pathPlots[n].visible = false
+	line2d.clear_points()
