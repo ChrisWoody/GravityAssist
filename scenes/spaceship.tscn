@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddiylcki0mec2"]
+[gd_scene load_steps=6 format=3 uid="uid://ddiylcki0mec2"]
 
 [ext_resource type="Texture2D" uid="uid://dh7jihn6uxs4" path="res://assests/spaceshipv1.png" id="1_gyjty"]
 [ext_resource type="Script" path="res://scripts/spaceship.gd" id="1_jdq2w"]
+[ext_resource type="PackedScene" uid="uid://clrhdjhe8pkve" path="res://scenes/path_plotter.tscn" id="2_3edt7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_f1ikj"]
 size = Vector2(10, -25)
@@ -12,6 +13,7 @@ size = Vector2(9.99993, 23.5)
 [node name="Spaceship" type="Node2D"]
 rotation = 1.5708
 script = ExtResource("1_jdq2w")
+line2dScene = ExtResource("2_3edt7")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("QuadMesh_f1ikj")

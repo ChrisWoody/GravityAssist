@@ -1,15 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8hc50k4i5dp7"]
+[gd_scene load_steps=3 format=3 uid="uid://clrhdjhe8pkve"]
 
 [ext_resource type="Script" path="res://scripts/path_plotter.gd" id="1_liuj6"]
 
-[sub_resource type="Gradient" id="Gradient_3hot2"]
-colors = PackedColorArray(0.729775, 0, 0.21691, 1, 0.814645, 0.649804, 3.85046e-07, 1)
+[sub_resource type="Gradient" id="Gradient_jmlk4"]
+colors = PackedColorArray(1, 0.169328, 0.287338, 1, 0.639794, 0.576276, 0, 1)
 
-[node name="PathPlotter" type="Node"]
-script = ExtResource("1_liuj6")
-
-[node name="Line2D" type="Line2D" parent="."]
-unique_name_in_owner = true
+[node name="PathPlotter" type="Line2D"]
 width = 2.0
-gradient = SubResource("Gradient_3hot2")
+gradient = SubResource("Gradient_jmlk4")
 antialiased = true
+script = ExtResource("1_liuj6")
