@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk7yncfcdohn3"]
+
+[ext_resource type="Script" path="res://scripts/finish_area.gd" id="1_686jx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5e4am"]
+size = Vector2(100, 100)
+
+[sub_resource type="Gradient" id="Gradient_tsabp"]
+colors = PackedColorArray(0.129412, 0.364706, 1, 0.596078, 0.318214, 0.502481, 1, 0.683676)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tfchx"]
+gradient = SubResource("Gradient_tsabp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktq8n"]
+size = Vector2(100, 100)
+
+[node name="FinishArea" type="Node2D"]
+script = ExtResource("1_686jx")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_5e4am")
+texture = SubResource("GradientTexture2D_tfchx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ktq8n")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

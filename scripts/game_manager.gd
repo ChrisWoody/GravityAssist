@@ -19,17 +19,22 @@ var mouseClickStartPosition := Vector2(-456, -10)
 var mouseClickEndPosition := Vector2.ZERO
 
 var planets: Array[Planet]
+var previousLaunches: Array[LaunchParameters]
 
 func _ready() -> void:
 	var planetsFound: Array[Node] = get_parent().find_children("Planet*")
 	planets.assign(planetsFound)
-	print(str(planets.size()))
 	currentSpaceship = spawnSpaceship()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		resetGame.emit()
-	
+
+	if Input.is_action_just_pressed("spawn_previous_launches"):
+		for previousLaunch in previousLaunches:
+			var spaceshipInstance := spawnSpaceship()
+			spaceshipInstance.replayLaunch(previousLaunch.speed, previousLaunch.angle)
+
 	if clicking:
 		mouseClickEndPosition = get_global_mouse_position()
 		launchLine.set_point_position(1, launchLine.to_local(mouseClickEndPosition))
@@ -58,11 +63,12 @@ func _input(event):
 				launchLine.set_point_position(1, Vector2.ZERO)
 			else:
 				clicking = true
-				
 
 func launched() -> void:
 	clicking = false
 	playing = true
+	var launchParameters := LaunchParameters.LaunchParameters(angle, speed)
+	previousLaunches.append(launchParameters)
 	launch.emit(speed, angle)
 
 func spaceshipCrashed() -> void:

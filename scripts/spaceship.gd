@@ -14,13 +14,13 @@ const LINE_TIMEOUT := 0.1
 var lineElapsed := 0.0
 
 var playing := false
+var replaying := false
 var playingSpeed := 60.0
 
 const gravityTimeout = 0.1
 var gravityAppliedElapsed := 0.0
 var applyGravityNext := false
 var gravity := Vector2.ZERO
-var gravityRotation := 20.0
 
 var originalPosition := Vector2.ZERO
 
@@ -43,11 +43,12 @@ func _process(delta: float) -> void:
 			line2d.add_point(global_position)
 
 		var applyGravity := false
+		var gravityRotation := 0.0
+
 		for planet in planets:
 			var diff := planet.global_position - global_position
-			print("in range " + str(diff.length()))
 			if diff.length() < 150.0:
-				
+				gravityRotation = -2.0 if position.y > planet.position.y else 2.0
 				applyGravity = true
 
 		if applyGravity:
@@ -64,18 +65,23 @@ func _process(delta: float) -> void:
 
 func setGravityObjects(objects: Array[Planet]) -> void:
 	planets = objects
-	print("set grav " + str(planets.size()))
 
 func crashed() ->  void:
-	gameManager.spaceshipCrashed()
+	if not replaying:
+		gameManager.spaceshipCrashed()
 	line2d.queue_free()
 	queue_free()
 
-func applyGravity(dir: Vector2, gravityRotationToApply: float) -> void:
-	applyGravityNext = true
-	gravityRotation = gravityRotationToApply
+func arrivedFinishedArea() -> void:
+	pass
 
 func launch(speed: float, rotation: float) -> void:
 	playing = true
+	playingSpeed = speed
+	rotation_degrees = rotation
+
+func replayLaunch(speed: float, rotation: float) -> void:
+	playing = true
+	replaying = true
 	playingSpeed = speed
 	rotation_degrees = rotation
