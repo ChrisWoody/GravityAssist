@@ -1,6 +1,9 @@
 class_name Spaceship extends Node2D
 
 @export var line2dScene: PackedScene
+@export var line2dNormalGradient: Gradient
+@export var line2dFinishedGradient: Gradient
+
 @onready var gameManager: GameManager = get_node("../GameManager")
 @onready var topLeftWall: Node2D = get_node("../TopLetWall")
 @onready var bottomRightWall: Node2D = get_node("../BottomRightWall")
@@ -16,6 +19,7 @@ var lineElapsed := 0.0
 var playing := false
 var replaying := false
 var playingSpeed := 60.0
+var finishingSpaceship := false
 
 const gravityTimeout = 0.1
 var gravityAppliedElapsed := 0.0
@@ -34,6 +38,7 @@ func _ready() -> void:
 	originalPosition = global_position
 	line2d = line2dScene.instantiate()
 	add_sibling.call_deferred(line2d)
+	line2d.gradient = line2dFinishedGradient if finishingSpaceship else line2dNormalGradient
 
 func _process(delta: float) -> void:
 	if playing:
@@ -67,21 +72,27 @@ func setGravityObjects(objects: Array[Planet]) -> void:
 	planets = objects
 
 func crashed() ->  void:
+	playing = false
 	if not replaying:
 		gameManager.spaceshipCrashed()
-	line2d.queue_free()
-	queue_free()
+		line2d.queue_free()
+		queue_free()
 
 func arrivedFinishedArea() -> void:
-	pass
+	playing = false
+	if not replaying:
+		gameManager.spaceshipFinished()
+		line2d.queue_free()
+		queue_free()
 
 func launch(speed: float, rotation: float) -> void:
 	playing = true
 	playingSpeed = speed
 	rotation_degrees = rotation
 
-func replayLaunch(speed: float, rotation: float) -> void:
+func replayLaunch(speed: float, rotation: float, spaceshipFinished: bool) -> void:
 	playing = true
 	replaying = true
 	playingSpeed = speed
 	rotation_degrees = rotation
+	finishingSpaceship = spaceshipFinished

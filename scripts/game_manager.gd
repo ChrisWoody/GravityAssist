@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("spawn_previous_launches"):
 		for previousLaunch in previousLaunches:
 			var spaceshipInstance := spawnSpaceship()
-			spaceshipInstance.replayLaunch(previousLaunch.speed, previousLaunch.angle)
+			spaceshipInstance.replayLaunch(previousLaunch.speed, previousLaunch.angle, false)
 
 	if clicking:
 		mouseClickEndPosition = get_global_mouse_position()
@@ -85,3 +85,10 @@ func spawnSpaceship() -> Spaceship:
 	spaceshipInstance.rotation_degrees = 90.0
 	spaceshipInstance.setGravityObjects(planets)
 	return spaceshipInstance
+
+func spaceshipFinished() -> void:
+	var index := 0
+	for previousLaunch in previousLaunches:
+		index += 1
+		var spaceshipInstance := spawnSpaceship()
+		spaceshipInstance.replayLaunch(previousLaunch.speed, previousLaunch.angle, true if index >= previousLaunches.size() else false)

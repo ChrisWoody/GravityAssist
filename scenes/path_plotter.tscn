@@ -1,12 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://clrhdjhe8pkve"]
 
+[ext_resource type="Gradient" uid="uid://cmg22u1b8o30p" path="res://scenes/new_gradient_winner.tres" id="1_3ohsj"]
 [ext_resource type="Script" path="res://scripts/path_plotter.gd" id="1_liuj6"]
-
-[sub_resource type="Gradient" id="Gradient_jmlk4"]
-colors = PackedColorArray(1, 0.169328, 0.287338, 1, 0.639794, 0.576276, 0, 1)
 
 [node name="PathPlotter" type="Line2D"]
 width = 2.0
-gradient = SubResource("Gradient_jmlk4")
+gradient = ExtResource("1_3ohsj")
 antialiased = true
 script = ExtResource("1_liuj6")
