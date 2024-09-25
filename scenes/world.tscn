@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr08ajut6v7wk"]
+[gd_scene load_steps=11 format=3 uid="uid://dr08ajut6v7wk"]
 
 [ext_resource type="Texture2D" uid="uid://baeptu70722k0" path="res://assests/backgroundv1.png" id="1_s5gvq"]
 [ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="2_kspeu"]
@@ -6,12 +6,16 @@
 [ext_resource type="Script" path="res://scripts/uimanager.gd" id="4_moe5a"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="5_frs4h"]
 [ext_resource type="PackedScene" uid="uid://bk7yncfcdohn3" path="res://scenes/finish_area.tscn" id="6_dftms"]
+[ext_resource type="Texture2D" uid="uid://b1jkuolsh6d75" path="res://assests/planetv1.png" id="7_weorq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hrhu3"]
 size = Vector2(1000, 800)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jpjxx"]
 font_size = 25
+
+[sub_resource type="QuadMesh" id="QuadMesh_5c6gf"]
+size = Vector2(30, 30)
 
 [node name="World" type="Node"]
 
@@ -29,6 +33,9 @@ position = Vector2(-248, -119)
 [node name="Planet2" parent="." instance=ExtResource("2_kspeu")]
 position = Vector2(218, -110)
 
+[node name="Planet3" parent="." instance=ExtResource("2_kspeu")]
+position = Vector2(219, 52)
+
 [node name="GameUI" type="CanvasGroup" parent="."]
 script = ExtResource("4_moe5a")
 
@@ -40,6 +47,21 @@ offset_bottom = -319.0
 text = "Speed: 0.0
 Angle: 0.0"
 label_settings = SubResource("LabelSettings_jpjxx")
+
+[node name="Button" type="Button" parent="GameUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 33.0
+offset_right = 3.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+text = "Play again"
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("5_frs4h")
@@ -59,4 +81,12 @@ position = Vector2(779, 481)
 [node name="FinishArea" parent="." instance=ExtResource("6_dftms")]
 position = Vector2(686, -183)
 
+[node name="LaunchPlanet" type="MeshInstance2D" parent="."]
+position = Vector2(-456, -10)
+mesh = SubResource("QuadMesh_5c6gf")
+texture = ExtResource("7_weorq")
+
+[connection signal="pressed" from="GameUI/Button" to="GameManager" method="_on_button_pressed"]
+[connection signal="levelComplete" from="GameManager" to="GameUI" method="_on_game_manager_level_complete"]
+[connection signal="resetGame" from="GameManager" to="GameUI" method="_on_game_manager_reset_game"]
 [connection signal="spaceshipLaunchState" from="GameManager" to="GameUI" method="_on_game_manager_spaceship_launch_state"]

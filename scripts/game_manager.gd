@@ -3,6 +3,7 @@ class_name GameManager extends Node2D
 signal resetGame
 signal launch(speed: float, rotation: float)
 signal spaceshipLaunchState(speed: float, rotation: float)
+signal levelComplete
 
 @export var spaceship: PackedScene
 @onready var launchLine: Line2D = get_node("../LaunchLine")
@@ -81,6 +82,7 @@ func spawnSpaceship() -> Spaceship:
 	var spaceshipInstance: Spaceship = spaceship.instantiate()
 	add_sibling.call_deferred(spaceshipInstance)
 	launch.connect(spaceshipInstance.launch)
+	resetGame.connect(spaceshipInstance.resetGame)
 	spaceshipInstance.global_position = Vector2(-456, -10)
 	spaceshipInstance.rotation_degrees = 90.0
 	spaceshipInstance.setGravityObjects(planets)
@@ -92,3 +94,12 @@ func spaceshipFinished() -> void:
 		index += 1
 		var spaceshipInstance := spawnSpaceship()
 		spaceshipInstance.replayLaunch(previousLaunch.speed, previousLaunch.angle, true if index >= previousLaunches.size() else false)
+	levelComplete.emit()
+
+# play again
+func _on_button_pressed() -> void:
+	clicking = false
+	playing = false
+	resetGame.emit()
+	previousLaunches.clear()
+	currentSpaceship = spawnSpaceship()

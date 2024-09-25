@@ -20,6 +20,7 @@ line2dNormalGradient = ExtResource("3_6rcru")
 line2dFinishedGradient = ExtResource("4_82sk8")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+z_index = 1
 mesh = SubResource("QuadMesh_f1ikj")
 texture = ExtResource("1_gyjty")
 
