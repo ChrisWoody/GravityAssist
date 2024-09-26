@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/path_plotter.gd" id="1_liuj6"]
 
 [node name="PathPlotter" type="Line2D"]
-width = 2.0
+width = 1.0
 gradient = ExtResource("1_3ohsj")
 antialiased = true
 script = ExtResource("1_liuj6")

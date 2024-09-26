@@ -7,7 +7,8 @@ func _ready():
 	playAgain.visible = false
 
 func _on_game_manager_spaceship_launch_state(speed:float, rotation:float) -> void:
-	label.text = "Speed: " + str(speed) + "\r\n" + "Rotation: " + str(rotation)
+	pass
+	#label.text = "Speed: " + str(speed) + "\r\n" + "Rotation: " + str(rotation)
 
 func _on_game_manager_level_complete() -> void:
 	playAgain.visible = true

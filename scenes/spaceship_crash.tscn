@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cynlcfjydp1o0"]
+
+[ext_resource type="Texture2D" uid="uid://bao30x2n5e6km" path="res://assests/spaceship-crash-01.png" id="1_d1nvr"]
+[ext_resource type="Script" path="res://scripts/spaceship_crash.gd" id="1_h3evl"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4fgyi"]
+size = Vector2(100, 100)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_h3evl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_4fgyi")
+texture = ExtResource("1_d1nvr")

@@ -3,6 +3,7 @@ class_name Spaceship extends Node2D
 @export var line2dScene: PackedScene
 @export var line2dNormalGradient: Gradient
 @export var line2dFinishedGradient: Gradient
+@export var spaceshipCrash: PackedScene
 
 @onready var gameManager: GameManager = get_node("../GameManager")
 @onready var topLeftWall: Node2D = get_node("../TopLetWall")
@@ -73,6 +74,12 @@ func setGravityObjects(objects: Array[Planet]) -> void:
 
 func crashed() ->  void:
 	playing = false
+
+	var spaceshipCrashInstance: SpaceshipCrash = spaceshipCrash.instantiate()
+	add_sibling.call_deferred(spaceshipCrashInstance)
+	spaceshipCrashInstance.global_position = global_position
+	spaceshipCrashInstance.global_rotation_degrees = randf() * 360
+
 	if not replaying:
 		gameManager.spaceshipCrashed()
 		line2d.queue_free()

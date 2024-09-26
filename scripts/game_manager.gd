@@ -7,6 +7,7 @@ signal levelComplete
 
 @export var spaceship: PackedScene
 @onready var launchLine: Line2D = get_node("../LaunchLine")
+@onready var launchPlanet: MeshInstance2D = get_node("../LaunchPlanet")
 
 var playing := false
 var clicking := false
@@ -16,7 +17,7 @@ var currentSpaceship: Spaceship
 var speed := 60.0
 var angle := 90.0
 
-var mouseClickStartPosition := Vector2(-456, -10)
+var mouseClickStartPosition := Vector2.ZERO
 var mouseClickEndPosition := Vector2.ZERO
 
 var planets: Array[Planet]
@@ -26,6 +27,7 @@ func _ready() -> void:
 	var planetsFound: Array[Node] = get_parent().find_children("Planet*")
 	planets.assign(planetsFound)
 	currentSpaceship = spawnSpaceship()
+	mouseClickStartPosition = launchPlanet.global_position
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
@@ -44,7 +46,7 @@ func _process(_delta: float) -> void:
 		var angleToPoint := mouseClickStartPosition.angle_to_point(mouseClickEndPosition)
 		var angleInDegress := rad_to_deg(angleToPoint) + 90.0
 		angle = angleInDegress
-		currentSpaceship.global_position = Vector2(-456, -10) + (Vector2.from_angle(deg_to_rad(angle - 90.0)) * 30.0)
+		currentSpaceship.global_position = launchPlanet.global_position + (Vector2.from_angle(deg_to_rad(angle - 90.0)) * 30.0)
 
 		launchLine.set_point_position(0, launchLine.to_local(currentSpaceship.global_position))
 		currentSpaceship.rotation_degrees = angleInDegress
@@ -83,7 +85,7 @@ func spawnSpaceship() -> Spaceship:
 	add_sibling.call_deferred(spaceshipInstance)
 	launch.connect(spaceshipInstance.launch)
 	resetGame.connect(spaceshipInstance.resetGame)
-	spaceshipInstance.global_position = Vector2(-456, -10)
+	spaceshipInstance.global_position = launchPlanet.global_position + (Vector2.from_angle(deg_to_rad(0)) * 30.0)
 	spaceshipInstance.rotation_degrees = 90.0
 	spaceshipInstance.setGravityObjects(planets)
 	return spaceshipInstance
@@ -93,6 +95,8 @@ func spaceshipFinished() -> void:
 	for previousLaunch in previousLaunches:
 		index += 1
 		var spaceshipInstance := spawnSpaceship()
+		# When replaying the spaceships end in a different spot than expected, what is causing it? The starting position?
+		spaceshipInstance.global_position = launchPlanet.global_position + (Vector2.from_angle(deg_to_rad(previousLaunch.angle - 90.0)) * 30.0)
 		spaceshipInstance.replayLaunch(previousLaunch.speed, previousLaunch.angle, true if index >= previousLaunches.size() else false)
 	levelComplete.emit()
 
