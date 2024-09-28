@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dr08ajut6v7wk"]
 
-[ext_resource type="Texture2D" uid="uid://baeptu70722k0" path="res://assests/backgroundv1.png" id="1_s5gvq"]
+[ext_resource type="Texture2D" uid="uid://bxhjvk5t04p2r" path="res://assests/Starfield 1 - 1024x1024.png" id="1_6ncl8"]
 [ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="2_kspeu"]
 [ext_resource type="PackedScene" uid="uid://ddiylcki0mec2" path="res://scenes/spaceship.tscn" id="3_saj76"]
 [ext_resource type="Script" path="res://scripts/uimanager.gd" id="4_moe5a"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b1jkuolsh6d75" path="res://assests/planetv1.png" id="7_weorq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hrhu3"]
-size = Vector2(1000, 800)
+size = Vector2(1500, 1000)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jpjxx"]
 font_size = 25
@@ -20,10 +20,9 @@ size = Vector2(30, 30)
 [node name="World" type="Node"]
 
 [node name="Background" type="MeshInstance2D" parent="."]
-position = Vector2(-9.50004, 0)
 scale = Vector2(1.606, 1.244)
 mesh = SubResource("QuadMesh_hrhu3")
-texture = ExtResource("1_s5gvq")
+texture = ExtResource("1_6ncl8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
