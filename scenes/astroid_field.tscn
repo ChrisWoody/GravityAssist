@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://e0ng1drb8pt2"]
+
+[ext_resource type="Script" path="res://scripts/astroid_field.gd" id="1_8t2iy"]
+[ext_resource type="Texture2D" uid="uid://mnbvaiq84hue" path="res://assests/astroid-fieldv1.png" id="1_di364"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3rxx5"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cem8o"]
+size = Vector2(50, 50)
+
+[node name="AstroidField" type="Node2D"]
+script = ExtResource("1_8t2iy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_3rxx5")
+texture = ExtResource("1_di364")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cem8o")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
