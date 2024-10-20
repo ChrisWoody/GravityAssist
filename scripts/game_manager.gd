@@ -133,3 +133,12 @@ func _on_level_01_button_pressed() -> void:
 
 func _on_level_02_button_pressed() -> void:
 	setupLevel(level02)
+
+func _on_level_picker_button_pressed() -> void:
+	resetGame.emit()
+	planets.clear()
+	previousLaunches.clear()
+	clicking = false
+	playing = false
+	pickingLevel = true
+	currentLevel.queue_free()
