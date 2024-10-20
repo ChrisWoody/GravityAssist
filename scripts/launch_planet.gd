@@ -1,0 +1,1 @@
+class_name LaunchPlanet extends MeshInstance2D

@@ -1,22 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://dr08ajut6v7wk"]
+[gd_scene load_steps=8 format=3 uid="uid://dr08ajut6v7wk"]
 
 [ext_resource type="Texture2D" uid="uid://bxhjvk5t04p2r" path="res://assests/Starfield 1 - 1024x1024.png" id="1_6ncl8"]
-[ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="2_kspeu"]
 [ext_resource type="PackedScene" uid="uid://ddiylcki0mec2" path="res://scenes/spaceship.tscn" id="3_saj76"]
 [ext_resource type="Script" path="res://scripts/uimanager.gd" id="4_moe5a"]
+[ext_resource type="PackedScene" uid="uid://csab4t8emwkd3" path="res://scenes/Levels/level_01.tscn" id="5_0q4vm"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="5_frs4h"]
-[ext_resource type="PackedScene" uid="uid://bk7yncfcdohn3" path="res://scenes/finish_area.tscn" id="6_dftms"]
-[ext_resource type="Texture2D" uid="uid://b1jkuolsh6d75" path="res://assests/planetv1.png" id="7_weorq"]
-[ext_resource type="PackedScene" uid="uid://e0ng1drb8pt2" path="res://scenes/astroid_field.tscn" id="8_vpvvs"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hrhu3"]
 size = Vector2(1500, 1000)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jpjxx"]
 font_size = 25
-
-[sub_resource type="QuadMesh" id="QuadMesh_5c6gf"]
-size = Vector2(30, 30)
 
 [node name="World" type="Node"]
 
@@ -26,16 +20,6 @@ mesh = SubResource("QuadMesh_hrhu3")
 texture = ExtResource("1_6ncl8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Planet" parent="." instance=ExtResource("2_kspeu")]
-position = Vector2(-248, -119)
-scale = Vector2(2.695, 2.695)
-
-[node name="Planet2" parent="." instance=ExtResource("2_kspeu")]
-position = Vector2(218, -110)
-
-[node name="Planet3" parent="." instance=ExtResource("2_kspeu")]
-position = Vector2(219, 52)
 
 [node name="GameUI" type="CanvasGroup" parent="."]
 script = ExtResource("4_moe5a")
@@ -67,9 +51,26 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Play again"
 
+[node name="Level01Button" type="Button" parent="GameUI"]
+z_index = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -299.0
+offset_right = -37.0
+offset_bottom = -261.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.78, 2.78)
+text = "Level 01"
+
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("5_frs4h")
 spaceship = ExtResource("3_saj76")
+level01 = ExtResource("5_0q4vm")
 
 [node name="LaunchLine" type="Line2D" parent="."]
 z_index = 1
@@ -82,39 +83,9 @@ position = Vector2(-800, -460)
 [node name="BottomRightWall" type="Node2D" parent="."]
 position = Vector2(779, 481)
 
-[node name="FinishArea" parent="." instance=ExtResource("6_dftms")]
-position = Vector2(641, -192)
-
-[node name="LaunchPlanet" type="MeshInstance2D" parent="."]
-position = Vector2(-623, 0)
-mesh = SubResource("QuadMesh_5c6gf")
-texture = ExtResource("7_weorq")
-
-[node name="AstroidField" parent="." instance=ExtResource("8_vpvvs")]
-position = Vector2(-640, 390)
-scale = Vector2(2.755, 2.755)
-
-[node name="AstroidField2" parent="." instance=ExtResource("8_vpvvs")]
-position = Vector2(-256, 279)
-scale = Vector2(2.755, 2.755)
-
-[node name="AstroidField3" parent="." instance=ExtResource("8_vpvvs")]
-position = Vector2(362, 252)
-scale = Vector2(2.755, 2.755)
-
-[node name="AstroidField4" parent="." instance=ExtResource("8_vpvvs")]
-position = Vector2(568, -390)
-scale = Vector2(2.755, 2.755)
-
-[node name="AstroidField5" parent="." instance=ExtResource("8_vpvvs")]
-position = Vector2(683, -17)
-scale = Vector2(2.755, 2.755)
-
-[node name="AstroidField6" parent="." instance=ExtResource("8_vpvvs")]
-position = Vector2(16.0001, -248)
-scale = Vector2(2.755, 2.755)
-
 [connection signal="pressed" from="GameUI/Button" to="GameManager" method="_on_button_pressed"]
+[connection signal="pressed" from="GameUI/Level01Button" to="GameUI" method="_on_level_01_button_pressed"]
+[connection signal="pressed" from="GameUI/Level01Button" to="GameManager" method="_on_level_01_button_pressed"]
 [connection signal="levelComplete" from="GameManager" to="GameUI" method="_on_game_manager_level_complete"]
 [connection signal="resetGame" from="GameManager" to="GameUI" method="_on_game_manager_reset_game"]
 [connection signal="spaceshipLaunchState" from="GameManager" to="GameUI" method="_on_game_manager_spaceship_launch_state"]

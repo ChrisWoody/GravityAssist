@@ -6,9 +6,13 @@ signal spaceshipLaunchState(speed: float, rotation: float)
 signal levelComplete
 
 @export var spaceship: PackedScene
-@onready var launchLine: Line2D = get_node("../LaunchLine")
-@onready var launchPlanet: MeshInstance2D = get_node("../LaunchPlanet")
+@export var level01: PackedScene
 
+@onready var launchLine: Line2D = get_node("../LaunchLine")
+
+var currentLevel: LevelBase
+
+var pickingLevel := true
 var playing := false
 var clicking := false
 
@@ -24,12 +28,12 @@ var planets: Array[Planet]
 var previousLaunches: Array[LaunchParameters]
 
 func _ready() -> void:
-	var planetsFound: Array[Node] = get_parent().find_children("Planet*")
-	planets.assign(planetsFound)
-	currentSpaceship = spawnSpaceship()
-	mouseClickStartPosition = launchPlanet.global_position
+	pass
 
 func _process(_delta: float) -> void:
+	if pickingLevel:
+		return
+
 	if Input.is_action_just_pressed("reset"):
 		resetGame.emit()
 
@@ -46,14 +50,14 @@ func _process(_delta: float) -> void:
 		var angleToPoint := mouseClickStartPosition.angle_to_point(mouseClickEndPosition)
 		var angleInDegress := rad_to_deg(angleToPoint) + 90.0
 		angle = angleInDegress
-		currentSpaceship.global_position = launchPlanet.global_position + (Vector2.from_angle(deg_to_rad(angle - 90.0)) * 30.0)
+		currentSpaceship.global_position = currentLevel.getLaunchPosition() + (Vector2.from_angle(deg_to_rad(angle - 90.0)) * 30.0)
 
 		launchLine.set_point_position(0, launchLine.to_local(currentSpaceship.global_position))
 		currentSpaceship.rotation_degrees = angleInDegress
 		spaceshipLaunchState.emit(speed, angle)
 
 func _input(event):
-	if playing:
+	if playing or pickingLevel:
 		return
 
 	if event is InputEventMouseButton:
@@ -66,6 +70,21 @@ func _input(event):
 				launchLine.set_point_position(1, Vector2.ZERO)
 			else:
 				clicking = true
+
+func setupLevel(levelBase: PackedScene) -> void:
+	planets.clear()
+	previousLaunches.clear()
+
+	currentLevel = levelBase.instantiate()
+	add_sibling.call_deferred(currentLevel)
+	var planetsFound: Array[Node] = currentLevel.find_children("Planet*")
+	planets.assign(planetsFound)
+	call_deferred("deferSetupLevel")
+	pickingLevel = false
+
+func deferSetupLevel() -> void:
+	currentSpaceship = spawnSpaceship()
+	mouseClickStartPosition = currentLevel.getLaunchPosition()
 
 func launched() -> void:
 	clicking = false
@@ -85,7 +104,7 @@ func spawnSpaceship() -> Spaceship:
 	add_sibling.call_deferred(spaceshipInstance)
 	launch.connect(spaceshipInstance.launch)
 	resetGame.connect(spaceshipInstance.resetGame)
-	spaceshipInstance.global_position = launchPlanet.global_position + (Vector2.from_angle(deg_to_rad(0)) * 30.0)
+	spaceshipInstance.global_position = currentLevel.getLaunchPosition() + (Vector2.from_angle(deg_to_rad(0)) * 30.0)
 	spaceshipInstance.rotation_degrees = 90.0
 	spaceshipInstance.setGravityObjects(planets)
 	return spaceshipInstance
@@ -96,7 +115,7 @@ func spaceshipFinished() -> void:
 		index += 1
 		var spaceshipInstance := spawnSpaceship()
 		# When replaying the spaceships end in a different spot than expected, what is causing it? The starting position?
-		spaceshipInstance.global_position = launchPlanet.global_position + (Vector2.from_angle(deg_to_rad(previousLaunch.angle - 90.0)) * 30.0)
+		spaceshipInstance.global_position = currentLevel.getLaunchPosition() + (Vector2.from_angle(deg_to_rad(previousLaunch.angle - 90.0)) * 30.0)
 		spaceshipInstance.replayLaunch(previousLaunch.speed, previousLaunch.angle, true if index >= previousLaunches.size() else false)
 	levelComplete.emit()
 
@@ -107,3 +126,6 @@ func _on_button_pressed() -> void:
 	resetGame.emit()
 	previousLaunches.clear()
 	currentSpaceship = spawnSpaceship()
+
+func _on_level_01_button_pressed() -> void:
+	setupLevel(level01)
