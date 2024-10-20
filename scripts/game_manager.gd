@@ -7,6 +7,7 @@ signal levelComplete
 
 @export var spaceship: PackedScene
 @export var level01: PackedScene
+@export var level02: PackedScene
 
 @onready var launchLine: Line2D = get_node("../LaunchLine")
 
@@ -79,10 +80,10 @@ func setupLevel(levelBase: PackedScene) -> void:
 	add_sibling.call_deferred(currentLevel)
 	var planetsFound: Array[Node] = currentLevel.find_children("Planet*")
 	planets.assign(planetsFound)
-	call_deferred("deferSetupLevel")
+	call_deferred("setupLevelDeferred")
 	pickingLevel = false
 
-func deferSetupLevel() -> void:
+func setupLevelDeferred() -> void:
 	currentSpaceship = spawnSpaceship()
 	mouseClickStartPosition = currentLevel.getLaunchPosition()
 
@@ -129,3 +130,6 @@ func _on_button_pressed() -> void:
 
 func _on_level_01_button_pressed() -> void:
 	setupLevel(level01)
+
+func _on_level_02_button_pressed() -> void:
+	setupLevel(level02)

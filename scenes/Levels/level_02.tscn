@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cblqobj16e38c"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_02.gd" id="1_7earr"]
+[ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="2_qrp84"]
+[ext_resource type="PackedScene" uid="uid://e0ng1drb8pt2" path="res://scenes/astroid_field.tscn" id="3_6208p"]
+[ext_resource type="PackedScene" uid="uid://bk7yncfcdohn3" path="res://scenes/finish_area.tscn" id="4_r106h"]
+[ext_resource type="PackedScene" uid="uid://d4h0v5hr4jrav" path="res://scenes/launch_planet.tscn" id="5_ey7hi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4qkdm"]
+lightmap_size_hint = Vector2i(7502, 5002)
+size = Vector2(1900, 1100)
+
+[node name="Level02" type="Node2D"]
+script = ExtResource("1_7earr")
+
+[node name="GameArea" type="MeshInstance2D" parent="."]
+modulate = Color(0.355314, 0.355314, 0.355314, 1)
+z_index = -10
+mesh = SubResource("QuadMesh_4qkdm")
+
+[node name="Planet" parent="." instance=ExtResource("2_qrp84")]
+position = Vector2(-280, 132)
+
+[node name="Planet2" parent="." instance=ExtResource("2_qrp84")]
+position = Vector2(-241, -151)
+
+[node name="Planet3" parent="." instance=ExtResource("2_qrp84")]
+position = Vector2(144, -61)
+
+[node name="AstroidField" parent="." instance=ExtResource("3_6208p")]
+position = Vector2(-76, -21)
+scale = Vector2(2, 2)
+
+[node name="AstroidField2" parent="." instance=ExtResource("3_6208p")]
+position = Vector2(-329, -281)
+scale = Vector2(2, 2)
+
+[node name="AstroidField3" parent="." instance=ExtResource("3_6208p")]
+position = Vector2(74, -237)
+scale = Vector2(2, 2)
+
+[node name="AstroidField4" parent="." instance=ExtResource("3_6208p")]
+position = Vector2(-112, 96)
+scale = Vector2(2, 2)
+
+[node name="FinishArea" parent="." instance=ExtResource("4_r106h")]
+position = Vector2(249, 130)
+
+[node name="LaunchPlanet" parent="." instance=ExtResource("5_ey7hi")]
+position = Vector2(-612, -172)
