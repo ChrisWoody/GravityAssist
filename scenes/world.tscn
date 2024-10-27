@@ -1,17 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr08ajut6v7wk"]
+[gd_scene load_steps=10 format=3 uid="uid://dr08ajut6v7wk"]
 
 [ext_resource type="Texture2D" uid="uid://bxhjvk5t04p2r" path="res://assests/Starfield 1 - 1024x1024.png" id="1_6ncl8"]
+[ext_resource type="Theme" uid="uid://4mjvxbof5ldi" path="res://scenes/button_theme.tres" id="3_ivn37"]
 [ext_resource type="PackedScene" uid="uid://ddiylcki0mec2" path="res://scenes/spaceship.tscn" id="3_saj76"]
 [ext_resource type="Script" path="res://scripts/uimanager.gd" id="4_moe5a"]
 [ext_resource type="PackedScene" uid="uid://csab4t8emwkd3" path="res://scenes/Levels/level_01.tscn" id="5_0q4vm"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="5_frs4h"]
 [ext_resource type="PackedScene" uid="uid://cblqobj16e38c" path="res://scenes/Levels/level_02.tscn" id="6_l5cjq"]
+[ext_resource type="PackedScene" uid="uid://c46ymmkuxy0sm" path="res://scenes/Levels/level_03.tscn" id="7_4ew07"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hrhu3"]
 size = Vector2(1500, 1000)
-
-[sub_resource type="LabelSettings" id="LabelSettings_jpjxx"]
-font_size = 25
 
 [node name="World" type="Node"]
 
@@ -24,17 +23,6 @@ texture = ExtResource("1_6ncl8")
 
 [node name="GameUI" type="CanvasGroup" parent="."]
 script = ExtResource("4_moe5a")
-
-[node name="Label" type="Label" parent="GameUI"]
-offset_left = -757.0
-offset_top = -430.0
-offset_right = -550.0
-offset_bottom = -319.0
-text = "Click & drag to determine the launch angle and speed
-Release to launch
-Use the gravity of the planets to reach the target
-If you crash you can try again"
-label_settings = SubResource("LabelSettings_jpjxx")
 
 [node name="PlayAgainButton" type="Button" parent="GameUI"]
 z_index = 3
@@ -50,6 +38,7 @@ offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
+theme = ExtResource("3_ivn37")
 text = "Play again"
 
 [node name="LevelPickerButton" type="Button" parent="GameUI"]
@@ -66,6 +55,7 @@ offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
+theme = ExtResource("3_ivn37")
 text = "Level picker"
 
 [node name="Level01Button" type="Button" parent="GameUI"]
@@ -82,6 +72,7 @@ offset_bottom = -261.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.78, 2.78)
+theme = ExtResource("3_ivn37")
 text = "Level 01"
 
 [node name="Level02Button" type="Button" parent="GameUI"]
@@ -98,13 +89,32 @@ offset_bottom = -137.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.78, 2.78)
+theme = ExtResource("3_ivn37")
 text = "Level 02"
+
+[node name="Level03Button" type="Button" parent="GameUI"]
+z_index = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -48.0
+offset_right = -37.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.78, 2.78)
+theme = ExtResource("3_ivn37")
+text = "Level 03"
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("5_frs4h")
 spaceship = ExtResource("3_saj76")
 level01 = ExtResource("5_0q4vm")
 level02 = ExtResource("6_l5cjq")
+level03 = ExtResource("7_4ew07")
 
 [node name="LaunchLine" type="Line2D" parent="."]
 z_index = 1
@@ -118,12 +128,14 @@ position = Vector2(-800, -460)
 position = Vector2(779, 481)
 
 [connection signal="pressed" from="GameUI/PlayAgainButton" to="GameManager" method="_on_button_pressed"]
-[connection signal="pressed" from="GameUI/LevelPickerButton" to="GameUI" method="_on_level_picker_button_pressed"]
 [connection signal="pressed" from="GameUI/LevelPickerButton" to="GameManager" method="_on_level_picker_button_pressed"]
 [connection signal="pressed" from="GameUI/Level01Button" to="GameUI" method="_on_level_01_button_pressed"]
 [connection signal="pressed" from="GameUI/Level01Button" to="GameManager" method="_on_level_01_button_pressed"]
 [connection signal="pressed" from="GameUI/Level02Button" to="GameUI" method="_on_level_02_button_pressed"]
 [connection signal="pressed" from="GameUI/Level02Button" to="GameManager" method="_on_level_02_button_pressed"]
+[connection signal="pressed" from="GameUI/Level03Button" to="GameUI" method="_on_level_03_button_pressed"]
+[connection signal="pressed" from="GameUI/Level03Button" to="GameManager" method="_on_level_03_button_pressed"]
+[connection signal="goToLevelPicker" from="GameManager" to="GameUI" method="_on_game_manager_go_to_level_picker"]
 [connection signal="levelComplete" from="GameManager" to="GameUI" method="_on_game_manager_level_complete"]
 [connection signal="resetGame" from="GameManager" to="GameUI" method="_on_game_manager_reset_game"]
 [connection signal="spaceshipLaunchState" from="GameManager" to="GameUI" method="_on_game_manager_spaceship_launch_state"]

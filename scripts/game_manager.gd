@@ -4,10 +4,12 @@ signal resetGame
 signal launch(speed: float, rotation: float)
 signal spaceshipLaunchState(speed: float, rotation: float)
 signal levelComplete
+signal goToLevelPicker
 
 @export var spaceship: PackedScene
 @export var level01: PackedScene
 @export var level02: PackedScene
+@export var level03: PackedScene
 
 @onready var launchLine: Line2D = get_node("../LaunchLine")
 
@@ -58,6 +60,10 @@ func _process(_delta: float) -> void:
 		spaceshipLaunchState.emit(speed, angle)
 
 func _input(event):
+	if event.is_action_pressed("go_to_level_picker"):
+		_on_level_picker_button_pressed()
+		return
+
 	if playing or pickingLevel:
 		return
 
@@ -134,6 +140,9 @@ func _on_level_01_button_pressed() -> void:
 func _on_level_02_button_pressed() -> void:
 	setupLevel(level02)
 
+func _on_level_03_button_pressed() -> void:
+	setupLevel(level03)
+
 func _on_level_picker_button_pressed() -> void:
 	resetGame.emit()
 	planets.clear()
@@ -141,4 +150,7 @@ func _on_level_picker_button_pressed() -> void:
 	clicking = false
 	playing = false
 	pickingLevel = true
-	currentLevel.queue_free()
+	if currentLevel:
+		currentLevel.queue_free()
+		currentLevel = null
+	goToLevelPicker.emit()

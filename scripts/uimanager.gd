@@ -1,10 +1,10 @@
 extends CanvasGroup
 
-@onready var label: Label = $Label
 @onready var playAgain: Button = $PlayAgainButton
 @onready var levelPicker: Button = $LevelPickerButton
 @onready var level01: Button = $Level01Button
 @onready var level02: Button = $Level02Button
+@onready var level03: Button = $Level03Button
 
 func _ready():
 	playAgain.visible = false
@@ -22,15 +22,20 @@ func _on_game_manager_reset_game() -> void:
 	levelPicker.visible = false
 
 func _on_level_01_button_pressed() -> void:
-	level01.visible = false
-	level02.visible = false
+	setLevelButtonsVisibility(false)
 
 func _on_level_02_button_pressed() -> void:
-	level02.visible = false
-	level01.visible = false
+	setLevelButtonsVisibility(false)
 
-func _on_level_picker_button_pressed() -> void:
+func _on_level_03_button_pressed() -> void:
+	setLevelButtonsVisibility(false)
+
+func setLevelButtonsVisibility(val: bool) -> void:
+	level01.visible = val
+	level02.visible = val
+	level03.visible = val
+
+func _on_game_manager_go_to_level_picker() -> void:
 	playAgain.visible = false
 	levelPicker.visible = false
-	level01.visible = true
-	level02.visible = true
+	setLevelButtonsVisibility(true)

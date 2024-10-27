@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://csab4t8emwkd3"]
+[gd_scene load_steps=8 format=3 uid="uid://csab4t8emwkd3"]
 
 [ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="1_88uo1"]
 [ext_resource type="Script" path="res://scripts/levels/level_01.gd" id="1_osgbb"]
@@ -9,6 +9,9 @@
 [sub_resource type="QuadMesh" id="QuadMesh_4qkdm"]
 lightmap_size_hint = Vector2i(7502, 5002)
 size = Vector2(1900, 1100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_17cy7"]
+font_size = 25
 
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_osgbb")
@@ -44,3 +47,14 @@ position = Vector2(-232, 319)
 
 [node name="LaunchPlanet" parent="." instance=ExtResource("4_2ve8d")]
 position = Vector2(-718, 366)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -757.0
+offset_top = -430.0
+offset_right = -550.0
+offset_bottom = -319.0
+text = "Click & drag to determine the launch angle and speed
+Release to launch
+Use the gravity of the planets to reach the target
+If you crash you can try again"
+label_settings = SubResource("LabelSettings_17cy7")
