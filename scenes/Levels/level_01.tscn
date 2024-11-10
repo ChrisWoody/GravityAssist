@@ -43,7 +43,7 @@ position = Vector2(117, -266)
 scale = Vector2(2, 2)
 
 [node name="FinishArea" parent="." instance=ExtResource("3_idjus")]
-position = Vector2(-232, 319)
+position = Vector2(603, -298)
 
 [node name="LaunchPlanet" parent="." instance=ExtResource("4_2ve8d")]
 position = Vector2(-718, 366)

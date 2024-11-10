@@ -9,6 +9,9 @@ class_name Spaceship extends Node2D
 @onready var topLeftWall: Node2D = get_node("../TopLetWall")
 @onready var bottomRightWall: Node2D = get_node("../BottomRightWall")
 
+@onready var leftPoint: Node2D = $LeftPoint
+@onready var rightPoint: Node2D = $RightPoint
+
 var line2d: Line2D
 
 const ROTATE_TIMEOUT = 0.05
@@ -54,7 +57,12 @@ func _process(delta: float) -> void:
 		for planet in planets:
 			var diff := planet.global_position - global_position
 			if diff.length() < 150.0:
-				gravityRotation = -2.0 if position.y > planet.position.y else 2.0
+				var left = planet.global_position - leftPoint.global_position
+				var right = planet.global_position - rightPoint.global_position
+				gravityRotation = -1500 if left.length() < right.length() else 1500
+
+				var rotationScale := (-diff.length() + 150.0) / 150.0
+				gravityRotation *= rotationScale
 				applyGravity = true
 
 		if applyGravity:
@@ -62,7 +70,7 @@ func _process(delta: float) -> void:
 			if gravityAppliedElapsed >= gravityTimeout:
 				gravityAppliedElapsed = 0.0
 				playingSpeed += 2
-				rotation_degrees += gravityRotation
+				rotation_degrees += gravityRotation * delta
 		
 		position += (Vector2.from_angle(deg_to_rad(rotation_degrees - 90.0)) * delta * playingSpeed)
 
