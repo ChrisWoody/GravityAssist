@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4h0v5hr4jrav"]
 
-[ext_resource type="Texture2D" uid="uid://b1jkuolsh6d75" path="res://assests/planetv1.png" id="1_4snjf"]
+[ext_resource type="Texture2D" uid="uid://l8iywm7dss0v" path="res://assests/home-planet01.png" id="1_23f2t"]
 [ext_resource type="Script" path="res://scripts/launch_planet.gd" id="2_aonoh"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_lithf"]
@@ -8,5 +8,5 @@ size = Vector2(30, 30)
 
 [node name="LaunchPlanet" type="MeshInstance2D"]
 mesh = SubResource("QuadMesh_lithf")
-texture = ExtResource("1_4snjf")
+texture = ExtResource("1_23f2t")
 script = ExtResource("2_aonoh")

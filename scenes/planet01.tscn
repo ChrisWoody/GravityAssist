@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddlala1v20lnf"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_aousx"]
+[ext_resource type="Texture2D" uid="uid://buupkxynd3ekt" path="res://assests/planetv2-01.png" id="2_ahmq0"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3n0ph"]
+size = Vector2(100, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_muwwd"]
+radius = 50.0
+
+[node name="Planet" type="Node2D"]
+script = ExtResource("1_aousx")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_3n0ph")
+texture = ExtResource("2_ahmq0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_muwwd")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

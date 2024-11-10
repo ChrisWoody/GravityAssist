@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvsm67wgpd0cl"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_01.gd" id="1_mmveq"]
-[ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="2_ystyk"]
+[ext_resource type="PackedScene" uid="uid://ddlala1v20lnf" path="res://scenes/planet01.tscn" id="3_4h2ht"]
 [ext_resource type="PackedScene" uid="uid://e0ng1drb8pt2" path="res://scenes/astroid_field.tscn" id="3_fdw4e"]
 [ext_resource type="PackedScene" uid="uid://bk7yncfcdohn3" path="res://scenes/finish_area.tscn" id="4_oxb5t"]
 [ext_resource type="PackedScene" uid="uid://d4h0v5hr4jrav" path="res://scenes/launch_planet.tscn" id="5_03aet"]
@@ -18,12 +18,12 @@ modulate = Color(0.355314, 0.355314, 0.355314, 1)
 z_index = -10
 mesh = SubResource("QuadMesh_4qkdm")
 
-[node name="Planet" parent="." instance=ExtResource("2_ystyk")]
-position = Vector2(-349, 144)
-
 [node name="AstroidField" parent="." instance=ExtResource("3_fdw4e")]
 position = Vector2(-85, 187)
 scale = Vector2(2, 2)
+
+[node name="Planet" parent="." instance=ExtResource("3_4h2ht")]
+position = Vector2(-481, 152)
 
 [node name="FinishArea" parent="." instance=ExtResource("4_oxb5t")]
 position = Vector2(-232, 319)

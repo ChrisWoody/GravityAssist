@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://csab4t8emwkd3"]
+[gd_scene load_steps=10 format=3 uid="uid://csab4t8emwkd3"]
 
-[ext_resource type="PackedScene" uid="uid://b5o8hhlfen65s" path="res://scenes/planet.tscn" id="1_88uo1"]
 [ext_resource type="Script" path="res://scripts/levels/level_01.gd" id="1_osgbb"]
-[ext_resource type="PackedScene" uid="uid://e0ng1drb8pt2" path="res://scenes/astroid_field.tscn" id="2_k2wpv"]
+[ext_resource type="PackedScene" uid="uid://ddlala1v20lnf" path="res://scenes/planet01.tscn" id="2_g2yhd"]
 [ext_resource type="PackedScene" uid="uid://bk7yncfcdohn3" path="res://scenes/finish_area.tscn" id="3_idjus"]
+[ext_resource type="PackedScene" uid="uid://d3q6o223pm8cx" path="res://scenes/planet02.tscn" id="3_u6du3"]
 [ext_resource type="PackedScene" uid="uid://d4h0v5hr4jrav" path="res://scenes/launch_planet.tscn" id="4_2ve8d"]
+[ext_resource type="PackedScene" uid="uid://c74efr40x6qol" path="res://scenes/planet03.tscn" id="4_81kh6"]
+[ext_resource type="PackedScene" uid="uid://cvl42mx7h4bct" path="res://scenes/astroid01.tscn" id="7_vcoxc"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_4qkdm"]
 lightmap_size_hint = Vector2i(7502, 5002)
@@ -21,26 +23,14 @@ modulate = Color(0.355314, 0.355314, 0.355314, 1)
 z_index = -10
 mesh = SubResource("QuadMesh_4qkdm")
 
-[node name="Planet" parent="." instance=ExtResource("1_88uo1")]
-position = Vector2(-349, 144)
+[node name="Planet3" parent="." instance=ExtResource("2_g2yhd")]
+position = Vector2(-345, 149)
 
-[node name="Planet2" parent="." instance=ExtResource("1_88uo1")]
-position = Vector2(-87, -48)
+[node name="Planet4" parent="." instance=ExtResource("3_u6du3")]
+position = Vector2(-43, -69)
 
-[node name="Planet3" parent="." instance=ExtResource("1_88uo1")]
+[node name="Planet2" parent="." instance=ExtResource("4_81kh6")]
 position = Vector2(367, -165)
-
-[node name="AstroidField" parent="." instance=ExtResource("2_k2wpv")]
-position = Vector2(-85, 187)
-scale = Vector2(2, 2)
-
-[node name="AstroidField2" parent="." instance=ExtResource("2_k2wpv")]
-position = Vector2(-386, -137)
-scale = Vector2(2, 2)
-
-[node name="AstroidField3" parent="." instance=ExtResource("2_k2wpv")]
-position = Vector2(117, -266)
-scale = Vector2(2, 2)
 
 [node name="FinishArea" parent="." instance=ExtResource("3_idjus")]
 position = Vector2(603, -298)
@@ -58,3 +48,71 @@ Release to launch
 Use the gravity of the planets to reach the target
 If you crash you can try again"
 label_settings = SubResource("LabelSettings_17cy7")
+
+[node name="Astroids" type="Node2D" parent="."]
+
+[node name="Astroid" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-396, -128)
+
+[node name="Astroid10" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-108, 168)
+
+[node name="Astroid11" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-115, 232)
+
+[node name="Astroid12" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-94, 294)
+
+[node name="Astroid13" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-44, 230)
+
+[node name="Astroid14" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-51, 160)
+
+[node name="Astroid15" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(22, 184)
+
+[node name="Astroid16" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(178, -439)
+
+[node name="Astroid17" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(171, -375)
+
+[node name="Astroid18" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(192, -313)
+
+[node name="Astroid19" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(242, -377)
+
+[node name="Astroid20" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(235, -447)
+
+[node name="Astroid21" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(283, -317)
+
+[node name="Astroid22" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(313, -382)
+
+[node name="Astroid4" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-459, -102)
+
+[node name="Astroid7" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-495, -228)
+
+[node name="Astroid8" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-434, -272)
+
+[node name="Astroid9" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-373, -243)
+
+[node name="Astroid5" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-488, -160)
+
+[node name="Astroid6" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-488, -160)
+
+[node name="Astroid2" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-420, -186)
+
+[node name="Astroid3" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-420, -186)

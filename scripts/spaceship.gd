@@ -56,12 +56,12 @@ func _process(delta: float) -> void:
 
 		for planet in planets:
 			var diff := planet.global_position - global_position
-			if diff.length() < 150.0:
+			if diff.length() < planet.gravityDistance:
 				var left = planet.global_position - leftPoint.global_position
 				var right = planet.global_position - rightPoint.global_position
 				gravityRotation = -1500 if left.length() < right.length() else 1500
 
-				var rotationScale := (-diff.length() + 150.0) / 150.0
+				var rotationScale := (-diff.length() + planet.gravityDistance) / planet.gravityDistance
 				gravityRotation *= rotationScale
 				applyGravity = true
 
