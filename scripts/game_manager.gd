@@ -98,6 +98,7 @@ func launched() -> void:
 	playing = true
 	var launchParameters := LaunchParameters.LaunchParameters(angle, speed)
 	previousLaunches.append(launchParameters)
+	print("Launch angle: " + str(angle) + ", speed: " + str(speed))
 	launch.emit(speed, angle)
 
 func spaceshipCrashed() -> void:

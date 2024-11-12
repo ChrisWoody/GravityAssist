@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/levels/level_01.gd" id="1_osgbb"]
 [ext_resource type="PackedScene" uid="uid://ddlala1v20lnf" path="res://scenes/planet01.tscn" id="2_g2yhd"]
 [ext_resource type="PackedScene" uid="uid://bk7yncfcdohn3" path="res://scenes/finish_area.tscn" id="3_idjus"]
-[ext_resource type="PackedScene" uid="uid://d3q6o223pm8cx" path="res://scenes/planet02.tscn" id="3_u6du3"]
 [ext_resource type="PackedScene" uid="uid://d4h0v5hr4jrav" path="res://scenes/launch_planet.tscn" id="4_2ve8d"]
-[ext_resource type="PackedScene" uid="uid://c74efr40x6qol" path="res://scenes/planet03.tscn" id="4_81kh6"]
+[ext_resource type="PackedScene" uid="uid://bj3dru0bo17k8" path="res://scenes/astroid02.tscn" id="6_dnyq8"]
+[ext_resource type="PackedScene" uid="uid://dxtq5plxd4322" path="res://scenes/astroid03.tscn" id="7_3aidb"]
 [ext_resource type="PackedScene" uid="uid://cvl42mx7h4bct" path="res://scenes/astroid01.tscn" id="7_vcoxc"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_4qkdm"]
@@ -19,30 +19,25 @@ font_size = 25
 script = ExtResource("1_osgbb")
 
 [node name="GameArea" type="MeshInstance2D" parent="."]
+visible = false
 modulate = Color(0.355314, 0.355314, 0.355314, 1)
 z_index = -10
 mesh = SubResource("QuadMesh_4qkdm")
 
 [node name="Planet3" parent="." instance=ExtResource("2_g2yhd")]
-position = Vector2(-345, 149)
-
-[node name="Planet4" parent="." instance=ExtResource("3_u6du3")]
-position = Vector2(-43, -69)
-
-[node name="Planet2" parent="." instance=ExtResource("4_81kh6")]
-position = Vector2(367, -165)
+position = Vector2(-16, -1)
 
 [node name="FinishArea" parent="." instance=ExtResource("3_idjus")]
-position = Vector2(603, -298)
+position = Vector2(329, 97)
 
 [node name="LaunchPlanet" parent="." instance=ExtResource("4_2ve8d")]
-position = Vector2(-718, 366)
+position = Vector2(-304, 196)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -757.0
-offset_top = -430.0
-offset_right = -550.0
-offset_bottom = -319.0
+offset_left = -838.0
+offset_top = -459.0
+offset_right = -193.0
+offset_bottom = -310.0
 text = "Click & drag to determine the launch angle and speed
 Release to launch
 Use the gravity of the planets to reach the target
@@ -50,69 +45,157 @@ If you crash you can try again"
 label_settings = SubResource("LabelSettings_17cy7")
 
 [node name="Astroids" type="Node2D" parent="."]
+position = Vector2(171, -33)
 
-[node name="Astroid" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-396, -128)
+[node name="Astroid" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-225, 205)
 
-[node name="Astroid10" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-108, 168)
+[node name="Astroid4" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-188, 214)
 
-[node name="Astroid11" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-115, 232)
+[node name="Astroid5" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-469, -61)
 
-[node name="Astroid12" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-94, 294)
+[node name="Astroid6" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-493, -116)
 
-[node name="Astroid13" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-44, 230)
+[node name="Astroid8" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-467, -145)
 
-[node name="Astroid14" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-51, 160)
+[node name="Astroid7" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-427, -74)
 
-[node name="Astroid15" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(22, 184)
+[node name="Astroid2" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-196, 297)
 
-[node name="Astroid16" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(178, -439)
+[node name="Astroid3" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-196, 297)
 
-[node name="Astroid17" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(171, -375)
+[node name="Astroid9" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-152, 199)
 
-[node name="Astroid18" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(192, -313)
+[node name="Astroid10" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-108, 166)
 
-[node name="Astroid19" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(242, -377)
+[node name="Astroid11" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-66, 202)
 
-[node name="Astroid20" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(235, -447)
+[node name="Astroid12" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-155, 294)
 
-[node name="Astroid21" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(283, -317)
+[node name="Astroid24" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-479, -9)
 
-[node name="Astroid22" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(313, -382)
+[node name="Astroid26" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-523, -53)
 
-[node name="Astroid4" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-459, -102)
+[node name="Astroid27" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-425, -125)
 
-[node name="Astroid7" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-495, -228)
+[node name="Astroid13" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-185, -198)
 
-[node name="Astroid8" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-434, -272)
+[node name="Astroid14" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-221, -221)
 
-[node name="Astroid9" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-373, -243)
+[node name="Astroid15" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-164, -243)
 
-[node name="Astroid5" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-488, -160)
+[node name="Astroid16" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-134, -214)
 
-[node name="Astroid6" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-488, -160)
+[node name="Astroid17" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-29, -254)
 
-[node name="Astroid2" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-420, -186)
+[node name="Astroid18" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(24, -265)
 
-[node name="Astroid3" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-420, -186)
+[node name="Astroid19" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(43, -304)
+
+[node name="Astroid30" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-276, -162)
+
+[node name="Astroid47" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-431, -211)
+
+[node name="Astroid48" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(112, -334)
+
+[node name="Astroid31" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-353, -222)
+
+[node name="Astroid32" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-86, -252)
+
+[node name="Astroid25" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-221, 257)
+
+[node name="Astroid28" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-187, 165)
+
+[node name="Astroid20" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-31, 238)
+
+[node name="Astroid21" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(20, 273)
+
+[node name="Astroid22" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(69, 271)
+
+[node name="Astroid23" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(133, 262)
+
+[node name="Astroid36" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(163, 238)
+
+[node name="Astroid37" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(9, 209)
+
+[node name="Astroid51" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(84, 223)
+
+[node name="Astroid33" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-281, -227)
+
+[node name="Astroid34" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-205, -285)
+
+[node name="Astroid35" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-15, -308)
+
+[node name="Astroid38" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(73, -253)
+
+[node name="Astroid39" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(107, -219)
+
+[node name="Astroid40" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(180, -100)
+
+[node name="Astroid41" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(201, -215)
+
+[node name="Astroid42" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(205, -158)
+
+[node name="Astroid43" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(144, -165)
+
+[node name="Astroid49" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(287, 58)
+
+[node name="Astroid50" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(272, -70)
+
+[node name="Astroid44" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(142, -266)
+
+[node name="Astroid45" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(138, -63)
+
+[node name="Astroid46" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(203, -8)
+
+[node name="Astroid29" parent="Astroids" instance=ExtResource("7_vcoxc")]
+position = Vector2(-97, 254)
