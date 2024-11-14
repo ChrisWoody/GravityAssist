@@ -113,5 +113,6 @@ func replayLaunch(speed: float, rotation: float, spaceshipFinished: bool) -> voi
 	finishingSpaceship = spaceshipFinished
 
 func resetGame() -> void:
-	line2d.queue_free()
+	if line2d:
+		line2d.queue_free()
 	queue_free()

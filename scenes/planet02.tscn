@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3q6o223pm8cx"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_26tqq"]
-[ext_resource type="Texture2D" uid="uid://dhs813ltsy7ru" path="res://assests/planetv2-02.png" id="2_x0ho1"]
+[ext_resource type="Texture2D" uid="uid://23bwtgspc3tg" path="res://assests/planetv2-02-smaller.png" id="2_bh1qw"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3n0ph"]
 size = Vector2(150, 150)
@@ -15,7 +15,7 @@ sizeScale = 1
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("QuadMesh_3n0ph")
-texture = ExtResource("2_x0ho1")
+texture = ExtResource("2_bh1qw")
 
 [node name="Area2D" type="Area2D" parent="."]
 

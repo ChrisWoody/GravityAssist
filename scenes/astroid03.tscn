@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxtq5plxd4322"]
 
 [ext_resource type="Script" path="res://scripts/astroid_field.gd" id="1_xmd1s"]
-[ext_resource type="Texture2D" uid="uid://dxc34rhm0kmik" path="res://assests/astroidv3.png" id="2_n5t7i"]
+[ext_resource type="Texture2D" uid="uid://cq5l5r8008dag" path="res://assests/astroidv3-smaller.png" id="2_4x5aj"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3rxx5"]
 size = Vector2(60, 60)
@@ -11,7 +11,7 @@ script = ExtResource("1_xmd1s")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("QuadMesh_3rxx5")
-texture = ExtResource("2_n5t7i")
+texture = ExtResource("2_4x5aj")
 
 [node name="Area2D" type="Area2D" parent="."]
 
