@@ -3,23 +3,23 @@
 [ext_resource type="Script" path="res://scripts/finish_area.gd" id="1_686jx"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5e4am"]
-size = Vector2(100, 100)
+size = Vector2(200, 200)
 
-[sub_resource type="Gradient" id="Gradient_tsabp"]
-colors = PackedColorArray(0.129412, 0.364706, 1, 0.596078, 0.318214, 0.502481, 1, 0.683676)
+[sub_resource type="Gradient" id="Gradient_s3k2p"]
+offsets = PackedFloat32Array(0.00649351, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tfchx"]
-gradient = SubResource("Gradient_tsabp")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ys2gi"]
+gradient = SubResource("Gradient_s3k2p")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktq8n"]
-size = Vector2(100, 100)
+size = Vector2(200, 200)
 
 [node name="FinishArea" type="Node2D"]
 script = ExtResource("1_686jx")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("QuadMesh_5e4am")
-texture = SubResource("GradientTexture2D_tfchx")
+texture = SubResource("GradientTexture1D_ys2gi")
 
 [node name="Area2D" type="Area2D" parent="."]
 

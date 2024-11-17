@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/launch_planet.gd" id="2_aonoh"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_lithf"]
-size = Vector2(30, 30)
+size = Vector2(60, 60)
 
 [node name="LaunchPlanet" type="MeshInstance2D"]
 mesh = SubResource("QuadMesh_lithf")

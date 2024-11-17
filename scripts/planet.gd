@@ -6,13 +6,13 @@ var gravityDistance: float
 func _ready():
 	match sizeScale:
 		Size.Small:
-			gravityDistance = 150.0
+			gravityDistance = 300.0
 		Size.Medium:
-			gravityDistance = 200.0
+			gravityDistance = 400.0
 		Size.Large:
-			gravityDistance = 250.0
+			gravityDistance = 500.0
 		_:
-			gravityDistance = 100.0
+			gravityDistance = 200.0
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var spaceship := area.get_parent() as Spaceship

@@ -1,13 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3q6o223pm8cx"]
+[gd_scene load_steps=8 format=3 uid="uid://d3q6o223pm8cx"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_26tqq"]
 [ext_resource type="Texture2D" uid="uid://23bwtgspc3tg" path="res://assests/planetv2-02-smaller.png" id="2_bh1qw"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3n0ph"]
-size = Vector2(150, 150)
+size = Vector2(300, 300)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_muwwd"]
-radius = 75.0
+radius = 150.0
+
+[sub_resource type="Animation" id="Animation_tqbuo"]
+resource_name = "planet_02_animation"
+length = 40.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_fdmxu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kb7ru"]
+_data = {
+"RESET": SubResource("Animation_fdmxu"),
+"planet_02_animation": SubResource("Animation_tqbuo")
+}
 
 [node name="Planet" type="Node2D"]
 script = ExtResource("1_26tqq")
@@ -21,5 +59,11 @@ texture = ExtResource("2_bh1qw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_muwwd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kb7ru")
+}
+autoplay = "planet_02_animation"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
