@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cblqobj16e38c"]
+[gd_scene load_steps=11 format=3 uid="uid://cblqobj16e38c"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_02.gd" id="1_7earr"]
 [ext_resource type="PackedScene" uid="uid://d3q6o223pm8cx" path="res://scenes/planet02.tscn" id="2_cblon"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cvl42mx7h4bct" path="res://scenes/astroid01.tscn" id="6_x5xkk"]
 [ext_resource type="PackedScene" uid="uid://bj3dru0bo17k8" path="res://scenes/astroid02.tscn" id="7_w6bbg"]
 [ext_resource type="PackedScene" uid="uid://ddlala1v20lnf" path="res://scenes/planet01.tscn" id="8_w15yv"]
+[ext_resource type="PackedScene" uid="uid://b7l5w7cx1mi4" path="res://scenes/game_border.tscn" id="9_kjxr8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_4qkdm"]
 lightmap_size_hint = Vector2i(7502, 5002)
@@ -178,3 +179,5 @@ position = Vector2(-435, -458)
 
 [node name="Planet" parent="." instance=ExtResource("8_w15yv")]
 position = Vector2(-285, -146)
+
+[node name="GameBorder" parent="." instance=ExtResource("9_kjxr8")]

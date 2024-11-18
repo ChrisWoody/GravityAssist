@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c46ymmkuxy0sm"]
+[gd_scene load_steps=7 format=3 uid="uid://c46ymmkuxy0sm"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_01.gd" id="1_gqnuw"]
 [ext_resource type="PackedScene" uid="uid://ddlala1v20lnf" path="res://scenes/planet01.tscn" id="2_tliw2"]
 [ext_resource type="PackedScene" uid="uid://bk7yncfcdohn3" path="res://scenes/finish_area.tscn" id="4_hdsgr"]
 [ext_resource type="PackedScene" uid="uid://d4h0v5hr4jrav" path="res://scenes/launch_planet.tscn" id="5_gtkb5"]
+[ext_resource type="PackedScene" uid="uid://b7l5w7cx1mi4" path="res://scenes/game_border.tscn" id="5_qmx50"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_4qkdm"]
 lightmap_size_hint = Vector2i(7502, 5002)
@@ -31,3 +32,5 @@ position = Vector2(-575, -280)
 
 [node name="LaunchPlanet" parent="." instance=ExtResource("5_gtkb5")]
 position = Vector2(550, 271)
+
+[node name="GameBorder" parent="." instance=ExtResource("5_qmx50")]
