@@ -7,7 +7,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg6019"
-   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
    sodipodi:docname="portalv2.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -27,11 +27,11 @@
      showgrid="false"
      inkscape:zoom="2.5247521"
      inkscape:cx="342.60789"
-     inkscape:cy="405.18829"
-     inkscape:window-width="2560"
-     inkscape:window-height="1369"
-     inkscape:window-x="1912"
-     inkscape:window-y="-8"
+     inkscape:cy="407.96084"
+     inkscape:window-width="2400"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -40,11 +40,11 @@
        inkscape:collect="always"
        id="linearGradient9570">
       <stop
-         style="stop-color:#ffd200;stop-opacity:1;"
+         style="stop-color:#fd9800;stop-opacity:1;"
          offset="0"
          id="stop9566" />
       <stop
-         style="stop-color:#ffd200;stop-opacity:0.48076925;"
+         style="stop-color:#ffa700;stop-opacity:0.48484847;"
          offset="1"
          id="stop9568" />
     </linearGradient>
@@ -52,10 +52,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter9562"
-       x="-0.050303236"
-       y="-0.050303236"
-       width="1.1006065"
-       height="1.1006065">
+       x="-0.081894772"
+       y="-0.081894772"
+       width="1.1637895"
+       height="1.1637895">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="0.88316591"
@@ -76,11 +76,27 @@
      inkscape:groupmode="layer"
      id="layer1">
     <circle
-       style="mix-blend-mode:soft-light;fill:#000000;fill-opacity:0.901408;stroke:url(#linearGradient9572);stroke-width:4.2;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter9562)"
+       style="mix-blend-mode:soft-light;fill:#000000;fill-opacity:0.901408;stroke:url(#linearGradient9572);stroke-width:9.5;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter9562)"
        id="path6194"
        cx="101.51945"
        cy="112.48653"
        r="41.941616"
+       inkscape:export-filename="assests\portalv2.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       sodipodi:type="spiral"
+       style="fill:none;fill-rule:evenodd;stroke:#faf84e;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:0.381773"
+       id="path3230"
+       sodipodi:cx="103.43342"
+       sodipodi:cy="113.7034"
+       sodipodi:expansion="0.69032729"
+       sodipodi:revolution="7.5412235"
+       sodipodi:radius="45.775063"
+       sodipodi:argument="-42.241165"
+       sodipodi:t0="0.74850863"
+       d="m 136.47613,96.016514 c 10.15968,18.123566 3.2318,41.633916 -14.8187,51.733056 -18.66873,10.44505 -42.874563,3.3042 -53.260548,-15.29204 C 57.669884,113.2507 65.020906,88.358198 84.155816,77.688904 103.89405,66.683206 129.46485,74.241751 140.4141,93.908623 151.6954,114.17191 143.93184,140.41306 123.73938,151.63908 102.95709,163.19301 76.053162,155.22683 64.553416,134.51483 52.72968,113.2193 60.896195,85.65982 82.121963,73.88925 94.449357,67.053198 109.59623,66.406131 122.48869,72.083055"
+       transform="matrix(-1,0,0,1,203.79297,-0.9431619)"
        inkscape:export-filename="assests\portalv2.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
