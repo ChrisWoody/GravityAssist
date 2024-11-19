@@ -1,12 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4h0v5hr4jrav"]
+[gd_scene load_steps=7 format=3 uid="uid://d4h0v5hr4jrav"]
 
-[ext_resource type="Texture2D" uid="uid://dlnsyncjkd7bc" path="res://assests/home-planet01-smaller.png" id="1_orwm8"]
+[ext_resource type="Texture2D" uid="uid://doo26tyayg7rq" path="res://assests/portal_03.png" id="1_unn1y"]
 [ext_resource type="Script" path="res://scripts/launch_planet.gd" id="2_aonoh"]
+[ext_resource type="Texture2D" uid="uid://chp664s58f6o2" path="res://assests/portal_02.png" id="2_w05jb"]
+[ext_resource type="Texture2D" uid="uid://bv6f0sipmd8uv" path="res://assests/portal_01.png" id="3_x7jle"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_lithf"]
 size = Vector2(60, 60)
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_0emrd"]
+frames = 3
+frame_0/texture = ExtResource("1_unn1y")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("2_w05jb")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("3_x7jle")
+frame_2/duration = 0.2
+
 [node name="LaunchPlanet" type="MeshInstance2D"]
 mesh = SubResource("QuadMesh_lithf")
-texture = ExtResource("1_orwm8")
+texture = SubResource("AnimatedTexture_0emrd")
 script = ExtResource("2_aonoh")

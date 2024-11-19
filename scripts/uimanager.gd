@@ -5,6 +5,7 @@ extends CanvasGroup
 @onready var level01: Button = $Level01Button
 @onready var level02: Button = $Level02Button
 @onready var level03: Button = $Level03Button
+@onready var gameTitleLabel: Label = $GameTitleLabel
 
 func _ready():
 	playAgain.visible = false
@@ -34,6 +35,7 @@ func setLevelButtonsVisibility(val: bool) -> void:
 	level01.visible = val
 	level02.visible = val
 	level03.visible = val
+	gameTitleLabel.visible = val
 
 func _on_game_manager_go_to_level_picker() -> void:
 	playAgain.visible = false

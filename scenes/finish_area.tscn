@@ -1,29 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk7yncfcdohn3"]
+[gd_scene load_steps=8 format=3 uid="uid://bk7yncfcdohn3"]
 
 [ext_resource type="Script" path="res://scripts/finish_area.gd" id="1_686jx"]
+[ext_resource type="Texture2D" uid="uid://1a53lwmq54j8" path="res://assests/portalv2.png" id="2_wd0o8"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_5e4am"]
+[sub_resource type="QuadMesh" id="QuadMesh_d21x6"]
 size = Vector2(200, 200)
 
-[sub_resource type="Gradient" id="Gradient_s3k2p"]
-offsets = PackedFloat32Array(0.00649351, 1)
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4nt3"]
+radius = 95.0
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ys2gi"]
-gradient = SubResource("Gradient_s3k2p")
+[sub_resource type="Animation" id="Animation_6dye7"]
+resource_name = "finish_area_animation_v2"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktq8n"]
-size = Vector2(200, 200)
+[sub_resource type="Animation" id="Animation_hjo3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqm0k"]
+_data = {
+"RESET": SubResource("Animation_hjo3u"),
+"finish_area_animation_v2": SubResource("Animation_6dye7")
+}
 
 [node name="FinishArea" type="Node2D"]
 script = ExtResource("1_686jx")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-mesh = SubResource("QuadMesh_5e4am")
-texture = SubResource("GradientTexture1D_ys2gi")
+mesh = SubResource("QuadMesh_d21x6")
+texture = ExtResource("2_wd0o8")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_ktq8n")
+shape = SubResource("CircleShape2D_o4nt3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rqm0k")
+}
+autoplay = "finish_area_animation_v2"
+speed_scale = 3.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

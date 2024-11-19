@@ -113,7 +113,7 @@ scale = Vector2(2.78, 2.78)
 theme = ExtResource("3_ivn37")
 text = "Level 03"
 
-[node name="Label" type="Label" parent="GameUI"]
+[node name="GameTitleLabel" type="Label" parent="GameUI"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
