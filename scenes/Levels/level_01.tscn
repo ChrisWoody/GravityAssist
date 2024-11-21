@@ -28,20 +28,20 @@ mesh = SubResource("QuadMesh_4qkdm")
 position = Vector2(-12, -10)
 
 [node name="FinishArea" parent="." instance=ExtResource("3_idjus")]
-position = Vector2(663, 325)
+position = Vector2(621, 268)
 
 [node name="LaunchPlanet" parent="." instance=ExtResource("4_2ve8d")]
 position = Vector2(-663, 319)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -769.0
-offset_top = -432.0
-offset_right = -124.0
-offset_bottom = -283.0
-text = "Click & drag to determine the launch angle and speed
+offset_left = -711.0
+offset_top = -398.0
+offset_right = -66.0
+offset_bottom = -249.0
+text = "Click & drag to set the launch angle and speed
 Release to launch
 Use the gravity of the planets to reach the target
-If you crash you can try again"
+Press 'Esc' to go back to the level picker"
 label_settings = SubResource("LabelSettings_17cy7")
 
 [node name="Astroids" type="Node2D" parent="."]
@@ -57,13 +57,16 @@ position = Vector2(-189, 277)
 position = Vector2(-217, 396)
 
 [node name="Astroid3" parent="Astroids" instance=ExtResource("6_dnyq8")]
-position = Vector2(-468, 442)
+position = Vector2(-424, 460)
 
 [node name="Astroid9" parent="Astroids" instance=ExtResource("6_dnyq8")]
 position = Vector2(-382, 290)
 
 [node name="Astroid13" parent="Astroids" instance=ExtResource("6_dnyq8")]
 position = Vector2(-812, -145)
+
+[node name="Astroid15" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(-929, -179)
 
 [node name="Astroid14" parent="Astroids" instance=ExtResource("6_dnyq8")]
 position = Vector2(-872, -74)
@@ -78,7 +81,7 @@ position = Vector2(-66, 202)
 position = Vector2(-78, 453)
 
 [node name="Astroid25" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-591, 426)
+position = Vector2(-605, 517)
 
 [node name="Astroid28" parent="Astroids" instance=ExtResource("7_vcoxc")]
 position = Vector2(-259, 228)
@@ -131,6 +134,24 @@ position = Vector2(450, -261)
 [node name="Astroid63" parent="Astroids" instance=ExtResource("6_dnyq8")]
 position = Vector2(400, -264)
 
+[node name="Astroid26" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(456, -308)
+
+[node name="Astroid39" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(687, -299)
+
+[node name="Astroid66" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(590, -286)
+
+[node name="Astroid67" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(543, -238)
+
+[node name="Astroid68" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(658, -252)
+
+[node name="Astroid69" parent="Astroids" instance=ExtResource("6_dnyq8")]
+position = Vector2(448, -373)
+
 [node name="Astroid37" parent="Astroids" instance=ExtResource("7_vcoxc")]
 position = Vector2(4, 289)
 
@@ -138,7 +159,7 @@ position = Vector2(4, 289)
 position = Vector2(72, 441)
 
 [node name="Astroid49" parent="Astroids" instance=ExtResource("7_3aidb")]
-position = Vector2(-166, 446)
+position = Vector2(-177, 481)
 
 [node name="Astroid50" parent="Astroids" instance=ExtResource("7_3aidb")]
 position = Vector2(-271, 318)
@@ -150,15 +171,24 @@ position = Vector2(-155, -312)
 position = Vector2(-800, -92)
 
 [node name="Astroid58" parent="Astroids" instance=ExtResource("7_3aidb")]
-position = Vector2(-82, -389)
+position = Vector2(-66, -375)
 
 [node name="Astroid59" parent="Astroids" instance=ExtResource("7_3aidb")]
 position = Vector2(-892, -129)
 
+[node name="Astroid64" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-1007, -186)
+
+[node name="Astroid65" parent="Astroids" instance=ExtResource("7_3aidb")]
+position = Vector2(-982, -98)
+
 [node name="Astroid46" parent="Astroids" instance=ExtResource("7_vcoxc")]
-position = Vector2(-434, 362)
+position = Vector2(-492, 397)
 
 [node name="Astroid29" parent="Astroids" instance=ExtResource("7_vcoxc")]
 position = Vector2(-105, 357)
 
 [node name="GameBorder" parent="." instance=ExtResource("8_5auus")]
+points = PackedVector2Array(-800, -460, 800, -460, 800, 460, -800, 460)
+closed = true
+joint_mode = 2

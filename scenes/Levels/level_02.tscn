@@ -23,13 +23,13 @@ z_index = -10
 mesh = SubResource("QuadMesh_4qkdm")
 
 [node name="Planet4" parent="." instance=ExtResource("2_cblon")]
-position = Vector2(272, 312)
+position = Vector2(235, 48)
 
 [node name="FinishArea" parent="." instance=ExtResource("4_r106h")]
-position = Vector2(714, 383)
+position = Vector2(544, 299)
 
 [node name="LaunchPlanet" parent="." instance=ExtResource("5_ey7hi")]
-position = Vector2(-785, -379)
+position = Vector2(-687, -366)
 
 [node name="Astroids" type="Node2D" parent="."]
 
