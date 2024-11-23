@@ -10,6 +10,7 @@ signal goToLevelPicker
 @export var level01: PackedScene
 @export var level02: PackedScene
 @export var level03: PackedScene
+@export var level04: PackedScene
 
 @onready var launchLine: Line2D = get_node("../LaunchLine")
 
@@ -143,6 +144,9 @@ func _on_level_02_button_pressed() -> void:
 
 func _on_level_03_button_pressed() -> void:
 	setupLevel(level03)
+
+func _on_level_04_button_pressed() -> void:
+	setupLevel(level04)
 
 func _on_level_picker_button_pressed() -> void:
 	resetGame.emit()

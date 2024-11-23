@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvsm67wgpd0cl"]
+[gd_scene load_steps=12 format=3 uid="uid://bvsm67wgpd0cl"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_01.gd" id="1_mmveq"]
 [ext_resource type="PackedScene" uid="uid://ddlala1v20lnf" path="res://scenes/planet01.tscn" id="3_4h2ht"]
 [ext_resource type="PackedScene" uid="uid://bk7yncfcdohn3" path="res://scenes/finish_area.tscn" id="4_oxb5t"]
 [ext_resource type="PackedScene" uid="uid://d4h0v5hr4jrav" path="res://scenes/launch_planet.tscn" id="5_03aet"]
 [ext_resource type="PackedScene" uid="uid://d3q6o223pm8cx" path="res://scenes/planet02.tscn" id="6_08b1x"]
+[ext_resource type="PackedScene" uid="uid://b7l5w7cx1mi4" path="res://scenes/game_border.tscn" id="7_d3eqx"]
 [ext_resource type="PackedScene" uid="uid://c74efr40x6qol" path="res://scenes/planet03.tscn" id="7_mcyre"]
 [ext_resource type="PackedScene" uid="uid://bj3dru0bo17k8" path="res://scenes/astroid02.tscn" id="8_7bpgc"]
 [ext_resource type="PackedScene" uid="uid://dxtq5plxd4322" path="res://scenes/astroid03.tscn" id="9_enjqa"]
+[ext_resource type="PackedScene" uid="uid://cvl42mx7h4bct" path="res://scenes/astroid01.tscn" id="10_smpml"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_4qkdm"]
 lightmap_size_hint = Vector2i(7502, 5002)
@@ -36,8 +38,15 @@ position = Vector2(-274, -134)
 [node name="Planet3" parent="." instance=ExtResource("7_mcyre")]
 position = Vector2(202, -55)
 
-[node name="Astroid" parent="." instance=ExtResource("8_7bpgc")]
+[node name="GameBorder" parent="." instance=ExtResource("7_d3eqx")]
+
+[node name="Astroids" type="Node2D" parent="."]
+
+[node name="Astroid" parent="Astroids" instance=ExtResource("8_7bpgc")]
 position = Vector2(-179, 72)
 
-[node name="Astroid2" parent="." instance=ExtResource("9_enjqa")]
-position = Vector2(77, 74)
+[node name="Astroid2" parent="Astroids" instance=ExtResource("9_enjqa")]
+position = Vector2(-58, 85)
+
+[node name="Astroid3" parent="Astroids" instance=ExtResource("10_smpml")]
+position = Vector2(-73, 179)
