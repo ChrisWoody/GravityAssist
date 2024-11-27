@@ -45,37 +45,37 @@ func _ready() -> void:
 	line2d.gradient = line2dFinishedGradient if finishingSpaceship else line2dNormalGradient
 
 func _process(delta: float) -> void:
-	if playing:
-		lineElapsed += delta
-		if lineElapsed >= LINE_TIMEOUT:
-			lineElapsed = 0.0
-			line2d.add_point(global_position)
+	if not playing:
+		return
 
-		var applyGravity := false
-		var gravityRotation := 0.0
+	lineElapsed += delta
+	if lineElapsed >= LINE_TIMEOUT:
+		lineElapsed = 0.0
+		line2d.add_point(global_position)
 
-		for planet in planets:
-			var diff := planet.global_position - global_position
-			if diff.length() < planet.gravityDistance:
-				var left = planet.global_position - leftPoint.global_position
-				var right = planet.global_position - rightPoint.global_position
-				gravityRotation = -1500 if left.length() < right.length() else 1500
 
-				var rotationScale := (-diff.length() + planet.gravityDistance) / planet.gravityDistance
-				gravityRotation *= rotationScale
-				applyGravity = true
+func _physics_process(delta: float) -> void:
+	if not playing:
+		return
 
-		if applyGravity:
-			gravityAppliedElapsed += delta
-			if gravityAppliedElapsed >= gravityTimeout:
-				gravityAppliedElapsed = 0.0
-				playingSpeed += 2
-				rotation_degrees += gravityRotation * delta
-		
-		position += (Vector2.from_angle(deg_to_rad(rotation_degrees - 90.0)) * delta * playingSpeed)
+	var gravityRotation := 0.0
 
-		if position.y <= topLeftWall.position.y or position.y >= bottomRightWall.position.y or position.x <= topLeftWall.position.x or position.x >= bottomRightWall.position.x:
-			crashed()
+	for planet in planets:
+		var diff := planet.global_position - global_position
+		if diff.length() < planet.gravityDistance:
+			var left = planet.global_position - leftPoint.global_position
+			var right = planet.global_position - rightPoint.global_position
+			var rotateTowardsPlanet = -100 if left.length() < right.length() else 100
+
+			var distanceScale := (-diff.length() + planet.gravityDistance) / planet.gravityDistance
+			rotateTowardsPlanet *= distanceScale
+			gravityRotation += rotateTowardsPlanet
+
+	rotation_degrees += gravityRotation * delta
+	position += (Vector2.from_angle(deg_to_rad(rotation_degrees - 90.0)) * delta * playingSpeed)
+
+	if position.y <= topLeftWall.position.y or position.y >= bottomRightWall.position.y or position.x <= topLeftWall.position.x or position.x >= bottomRightWall.position.x:
+		crashed()
 
 func setGravityObjects(objects: Array[Planet]) -> void:
 	planets = objects
@@ -100,16 +100,16 @@ func arrivedFinishedArea() -> void:
 		line2d.queue_free()
 		queue_free()
 
-func launch(speed: float, rotation: float) -> void:
+func launch(speed: float, initialRotation: float) -> void:
 	playing = true
 	playingSpeed = speed
-	rotation_degrees = rotation
+	rotation_degrees = initialRotation
 
-func replayLaunch(speed: float, rotation: float, spaceshipFinished: bool) -> void:
+func replayLaunch(speed: float, initialRotation: float, spaceshipFinished: bool) -> void:
 	playing = true
 	replaying = true
 	playingSpeed = speed
-	rotation_degrees = rotation
+	rotation_degrees = initialRotation
 	finishingSpaceship = spaceshipFinished
 
 func resetGame() -> void:
