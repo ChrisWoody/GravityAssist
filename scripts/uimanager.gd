@@ -13,9 +13,6 @@ func _ready():
 	playAgain.visible = false
 	levelPicker.visible = false
 
-func _on_game_manager_spaceship_launch_state(speed:float, rotation:float) -> void:
-	pass
-
 func _on_game_manager_level_complete() -> void:
 	playAgain.visible = true
 	levelPicker.visible = true

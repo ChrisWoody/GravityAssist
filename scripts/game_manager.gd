@@ -2,7 +2,6 @@ class_name GameManager extends Node2D
 
 signal resetGame
 signal launch(speed: float, rotation: float)
-signal spaceshipLaunchState(speed: float, rotation: float)
 signal levelComplete
 signal goToLevelPicker
 
@@ -53,13 +52,12 @@ func _process(_delta: float) -> void:
 		speed = (mouseClickEndPosition - mouseClickStartPosition).length() / 3.0
 
 		var angleToPoint := mouseClickStartPosition.angle_to_point(mouseClickEndPosition)
-		var angleInDegress := rad_to_deg(angleToPoint) + 90.0
-		angle = angleInDegress
+		var angleInDegrees := rad_to_deg(angleToPoint) + 90.0
+		angle = angleInDegrees
 		currentSpaceship.global_position = currentLevel.getLaunchPosition() + (Vector2.from_angle(deg_to_rad(angle - 90.0)) * 30.0)
 
 		launchLine.set_point_position(0, launchLine.to_local(currentSpaceship.global_position))
-		currentSpaceship.rotation_degrees = angleInDegress
-		spaceshipLaunchState.emit(speed, angle)
+		currentSpaceship.rotation_degrees = angleInDegrees
 
 func _input(event):
 	if event.is_action_pressed("go_to_level_picker"):
@@ -129,7 +127,6 @@ func spaceshipFinished() -> void:
 		spaceshipInstance.replayLaunch(previousLaunch.speed, previousLaunch.angle, true if index >= previousLaunches.size() else false)
 	levelComplete.emit()
 
-# play again
 func _on_button_pressed() -> void:
 	clicking = false
 	playing = false

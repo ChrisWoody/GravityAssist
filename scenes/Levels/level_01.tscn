@@ -38,10 +38,10 @@ offset_left = -711.0
 offset_top = -398.0
 offset_right = -66.0
 offset_bottom = -249.0
-text = "Click & drag to set the launch angle and speed
-Release to launch
-Use the gravity of the planets to reach the target
-Press 'Esc' to go back to the level picker"
+text = "- Click & drag to set the launch angle and speed
+- Release to launch
+- Use the gravity of the planets to reach the target
+- Press 'Esc' to go back to the level picker"
 label_settings = SubResource("LabelSettings_17cy7")
 
 [node name="Astroids" type="Node2D" parent="."]

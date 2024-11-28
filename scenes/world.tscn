@@ -202,4 +202,3 @@ position = Vector2(800, 460)
 [connection signal="goToLevelPicker" from="GameManager" to="GameUI" method="_on_game_manager_go_to_level_picker"]
 [connection signal="levelComplete" from="GameManager" to="GameUI" method="_on_game_manager_level_complete"]
 [connection signal="resetGame" from="GameManager" to="GameUI" method="_on_game_manager_reset_game"]
-[connection signal="spaceshipLaunchState" from="GameManager" to="GameUI" method="_on_game_manager_spaceship_launch_state"]

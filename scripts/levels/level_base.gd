@@ -1,6 +1,6 @@
 class_name LevelBase extends Node2D
 
-@onready var launchPlanth: MeshInstance2D = $LaunchPlanet
+@onready var launchPlanet: MeshInstance2D = $LaunchPlanet
 
 func getLaunchPosition() -> Vector2:
-	return launchPlanth.global_position
+	return launchPlanet.global_position
